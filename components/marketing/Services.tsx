@@ -11,16 +11,16 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { cn } from "@/lib/cn";
 
 interface Service {
   title: string;
   description: string;
   Icon: LucideIcon;
-  spotlight?: boolean;
+  featured?: boolean;
 }
 
 const services: Service[] = [
@@ -47,7 +47,7 @@ const services: Service[] = [
     description:
       "Scheduled, event-driven, and occupancy-aware routines configured around the household or operation.",
     Icon: Workflow,
-    spotlight: true,
+    featured: true,
   },
   {
     title: "Commercial Networking",
@@ -82,20 +82,28 @@ export function Services() {
       aria-labelledby="services-heading"
       className="relative bg-bg-0 py-24 sm:py-32 lg:py-40"
     >
-      <Container>
-        <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.85fr]">
-          <SectionHeading
-            eyebrow="Services"
-            title={
-              <span id="services-heading">
-                What we build,
-                <span className="italic text-accent"> end to end.</span>
-              </span>
-            }
-            subhead="Each category is staffed by people who do it as their full-time work. We design, install, commission, and monitor — without subcontracting the parts that matter."
-            className="max-w-2xl"
-          />
-        </div>
+      {/* Soft section atmosphere */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-24 h-[520px] w-[1100px] -translate-x-1/2 rounded-full opacity-60"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%)",
+        }}
+      />
+
+      <Container className="relative">
+        <SectionHeading
+          eyebrow="Services"
+          title={
+            <span id="services-heading">
+              What we build,
+              <span className="italic text-accent"> end to end.</span>
+            </span>
+          }
+          subhead="Each category is staffed by people who do it as their full-time work. We design, install, commission, and monitor — without subcontracting the parts that matter."
+          className="max-w-2xl"
+        />
 
         <ul
           className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4"
@@ -105,10 +113,14 @@ export function Services() {
             <Reveal
               key={service.title}
               variant="rise"
-              delay={index * 70}
-              className="h-full"
+              delay={index * 60}
+              className={cn("h-full", service.featured && "sm:col-span-2")}
             >
-              <ServiceCard service={service} />
+              {service.featured ? (
+                <FeaturedServiceCard service={service} />
+              ) : (
+                <ServiceCard service={service} />
+              )}
             </Reveal>
           ))}
         </ul>
@@ -117,65 +129,128 @@ export function Services() {
   );
 }
 
+/* -------------------------------------------------------------------------- */
+/* Standard card — light surface, dimensional capsule, cursor spotlight        */
+/* -------------------------------------------------------------------------- */
+
 function ServiceCard({ service }: { service: Service }) {
-  const { Icon, title, description, spotlight } = service;
-
+  const { Icon, title, description } = service;
   return (
-    <GlassCard
+    <SpotlightCard
       as="li"
-      className={cn(
-        "flex h-full flex-col p-7",
-        spotlight && "border-accent/30 shadow-[var(--shadow-card-hover)]",
-      )}
+      dotted
+      className="h-full rounded-[1.75rem] border border-border-soft bg-surface p-7 shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
     >
-      {/* Spotlight glow for featured card */}
-      {spotlight ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%)",
-          }}
-        />
-      ) : null}
-
-      {/* Dotted texture under spotlight card */}
-      {spotlight ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 opacity-40"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, color-mix(in srgb, var(--accent) 24%, transparent) 1px, transparent 1px)",
-            backgroundSize: "16px 16px",
-          }}
-        />
-      ) : null}
-
-      <div className="flex items-start justify-between">
-        <div
-          className={cn(
-            "flex size-14 items-center justify-center rounded-2xl",
-            spotlight
-              ? "bg-accent text-text-on-ink"
-              : "bg-accent-tint text-accent",
-          )}
-        >
-          <Icon size={26} strokeWidth={1.5} aria-hidden />
-        </div>
-        {spotlight ? (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-tint px-3 py-1 text-xs font-medium text-accent">
-            <Sparkles size={12} strokeWidth={2} aria-hidden />
-            Signature
-          </span>
-        ) : null}
-      </div>
-
-      <h3 className="mt-10 font-display text-[1.75rem] leading-[1.1] tracking-tight text-text-hi">
+      <IconCapsule Icon={Icon} />
+      <h3 className="mt-9 font-display text-[1.7rem] leading-[1.08] tracking-tight text-text-hi">
         {title}
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-text-mid">{description}</p>
-    </GlassCard>
+    </SpotlightCard>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Featured card — dark ink surface, spans two columns, stronger glow          */
+/* -------------------------------------------------------------------------- */
+
+function FeaturedServiceCard({ service }: { service: Service }) {
+  const { Icon, title, description } = service;
+  return (
+    <SpotlightCard
+      as="li"
+      dotted
+      glow="color-mix(in srgb, var(--accent-bright) 30%, transparent)"
+      className="h-full rounded-[1.75rem] border border-ink-1 bg-ink-0 p-8 shadow-[var(--shadow-2)]"
+    >
+      {/* Ambient corner gradient */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-70"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%)",
+        }}
+      />
+
+      <div className="flex h-full flex-col sm:flex-row sm:items-center sm:gap-8">
+        <div className="flex-1">
+          <div className="flex items-center gap-3">
+            <IconCapsule Icon={Icon} dark />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent-soft">
+              <Sparkles size={12} strokeWidth={2} aria-hidden />
+              Signature capability
+            </span>
+          </div>
+          <h3 className="mt-7 max-w-md font-display text-[2.1rem] leading-[1.05] tracking-tight text-text-on-ink">
+            {title}
+          </h3>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-text-on-ink-mid">
+            {description} Routines are commissioned with a real walkthrough, then
+            tuned against how the space is actually lived in.
+          </p>
+        </div>
+
+        {/* Mini automation preview */}
+        <div className="mt-7 w-full shrink-0 sm:mt-0 sm:w-56">
+          <AutomationPreview />
+        </div>
+      </div>
+    </SpotlightCard>
+  );
+}
+
+function AutomationPreview() {
+  const steps = [
+    ["6:30 PM", "Evening lighting scene"],
+    ["10:00 PM", "Arm perimeter"],
+    ["10:15 PM", "Climate to 68°"],
+  ] as const;
+  return (
+    <div className="rounded-2xl border border-ink-1 bg-[color-mix(in_srgb,var(--ink-1)_70%,black)] p-4">
+      <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-text-on-ink-mid">
+        Evening routine
+      </p>
+      <ol className="mt-3 space-y-3">
+        {steps.map(([time, action], i) => (
+          <li key={time} className="flex items-start gap-3">
+            <div className="flex flex-col items-center">
+              <span className="grid size-5 place-items-center rounded-full bg-accent text-[9px] font-semibold text-ink-0">
+                {i + 1}
+              </span>
+              {i < steps.length - 1 && <span className="mt-1 h-3 w-px bg-ink-1" />}
+            </div>
+            <div className="-mt-0.5">
+              <p className="text-[10px] font-medium text-text-on-ink-mid">{time}</p>
+              <p className="text-xs font-medium text-text-on-ink">{action}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dimensional icon capsule                                                    */
+/* -------------------------------------------------------------------------- */
+
+function IconCapsule({ Icon, dark = false }: { Icon: LucideIcon; dark?: boolean }) {
+  if (dark) {
+    return (
+      <div className="relative grid size-14 place-items-center rounded-2xl bg-gradient-to-b from-accent-bright to-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_10px_24px_color-mix(in_srgb,var(--accent)_45%,transparent)]">
+        <Icon size={26} strokeWidth={1.6} className="text-white" aria-hidden />
+      </div>
+    );
+  }
+  return (
+    <div className="relative grid size-16 place-items-center rounded-2xl bg-gradient-to-b from-white to-accent-tint shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_22px_color-mix(in_srgb,var(--accent)_14%,transparent)] ring-1 ring-accent/10">
+      {/* top sheen */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-2 top-1 h-4 rounded-full bg-white/70 blur-[6px]"
+      />
+      <Icon size={28} strokeWidth={1.5} className="relative text-accent" aria-hidden />
+    </div>
   );
 }

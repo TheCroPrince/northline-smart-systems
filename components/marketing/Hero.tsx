@@ -3,7 +3,7 @@ import { SmartHomeCard } from "@/components/marketing/hero/SmartHomeCard";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { WordReveal } from "@/components/ui/WordReveal";
+import { TextHoverEffect } from "@/components/ui/TextHoverEffect";
 
 export function Hero() {
   return (
@@ -18,10 +18,24 @@ export function Hero() {
         className="absolute inset-0 -z-30"
         style={{
           background: `
-            radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
-            radial-gradient(ellipse 50% 40% at 10% 90%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 60%),
+            radial-gradient(ellipse 60% 55% at 88% 12%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+            radial-gradient(ellipse 55% 45% at 6% 92%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 60%),
             var(--bg-0)
           `,
+        }}
+      />
+      {/* faint dotted texture */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 opacity-[0.5]"
+        style={{
+          backgroundImage:
+            "radial-gradient(color-mix(in srgb, var(--border-strong) 40%, transparent) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%)",
         }}
       />
 
@@ -53,11 +67,11 @@ export function Hero() {
         </header>
 
         {/* Hero body — split layout */}
-        <div className="grid items-center gap-12 pb-20 pt-12 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:pb-32 lg:pt-20">
+        <div className="grid items-center gap-10 pb-20 pt-10 sm:pt-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-12 lg:pb-32 lg:pt-16">
           {/* Left: text */}
-          <div className="max-w-xl">
+          <div className="max-w-2xl">
             <Reveal variant="fade">
-              <div className="inline-flex items-center gap-3 rounded-full border border-border bg-surface/70 px-4 py-1.5 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 px-4 py-1.5 backdrop-blur-sm">
                 <span className="size-1.5 rounded-full bg-accent" />
                 <span className="text-xs font-medium tracking-tight text-text-mid">
                   Now serving Canada and the United States
@@ -65,27 +79,31 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <h1
-              id="hero-headline"
-              className="mt-7 font-display text-[3.5rem] leading-[0.96] tracking-[-0.025em] text-text-hi sm:text-[5rem] lg:text-[6.5rem]"
-            >
-              <WordReveal>Smart systems.</WordReveal>
-              <span className="block italic text-accent">
-                <WordReveal delay={400}>Designed to disappear.</WordReveal>
-              </span>
+            {/* Real heading for a11y / SEO */}
+            <h1 id="hero-headline" className="sr-only">
+              Smart systems. Designed to disappear.
             </h1>
 
-            <Reveal variant="fade" delay={1100}>
+            {/* Canvas / clipped-gradient headline */}
+            <div className="mt-6 select-none" aria-hidden>
+              <div className="w-[64%]">
+                <TextHoverEffect text="Smart systems." />
+              </div>
+              <div className="-mt-2 w-full sm:-mt-3">
+                <TextHoverEffect text="Designed to disappear." italic duration={1.5} />
+              </div>
+            </div>
+
+            <Reveal variant="fade" delay={500}>
               <p className="mt-8 max-w-lg text-lg leading-relaxed text-text-mid">
                 Northline designs, installs, and monitors the technology behind
-                modern homes and commercial properties. One company, one
-                project lead, one system you can trust to recede into the
-                architecture.
+                modern homes and commercial properties. One company, one project
+                lead, one system you can trust to recede into the architecture.
               </p>
             </Reveal>
 
-            <Reveal variant="fade" delay={1250}>
-              <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+            <Reveal variant="fade" delay={650}>
+              <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 <Button variant="primary">
                   Book a consultation
                   <ArrowRight size={16} strokeWidth={2} aria-hidden />
@@ -97,12 +115,10 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* Right: smart-home product card */}
-          <div className="relative">
-            <Reveal variant="fade" delay={600}>
-              <SmartHomeCard />
-            </Reveal>
-          </div>
+          {/* Right: dark device card */}
+          <Reveal variant="fade" delay={400}>
+            <SmartHomeCard />
+          </Reveal>
         </div>
       </Container>
     </section>
