@@ -5,11 +5,13 @@
  * New values require an update to DESIGN_MOTION §21 before being added.
  */
 
+import type { Variants } from "framer-motion";
+
 // Easings. `out` is the canonical curve used everywhere except pulses/sweeps.
 export const ease = {
   out: [0.16, 1, 0.3, 1] as [number, number, number, number],
-  linear: "linear",
-} as const;
+  linear: "linear" as const,
+};
 
 // Durations in milliseconds.
 export const duration = {
@@ -39,28 +41,28 @@ export const stagger = {
 
 // Framer Motion variants (the entire reveal vocabulary).
 
-export const fadeIn = {
+export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: { duration: duration.normal / 1000, ease: ease.out },
   },
-} as const;
+};
 
-export const rise = {
+export const rise: Variants = {
   hidden: { opacity: 0, y: distance.riseY },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: duration.cinematic / 1000, ease: ease.out },
   },
-} as const;
+};
 
-export const settle = {
+export const settle: Variants = {
   hidden: { opacity: 0, scale: 0.98 },
   visible: {
     opacity: 1,
     scale: 1,
     transition: { duration: duration.slow / 1000, ease: ease.out },
   },
-} as const;
+};
