@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* Design tokens                                                              */
+/* Names mirror PRD.md §11 verbatim. Values are the single source of truth.   */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  /* Palette */
+  --bg-0: #0a0c10;
+  --bg-1: #10131a;
+  --surface: #171b25;
+  --surface-elev: #1f2530;
+  --border: #2a2f3d;
+  --text-hi: #eaeef5;
+  --text-mid: #a8b0bf;
+  --text-low: #697185;
+  --accent: #3b82f6;
+  --accent-soft: #7dd3fc;
+  --signal-warm: #f5c57b;
+  --signal-ok: #86efac;
+
+  /* Shadows (DESIGN_MOTION §5) */
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 1px 24px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 8px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tailwind theme bridge                                                      */
+/* Exposes tokens as Tailwind utilities (bg-bg-0, text-text-hi, font-sans...) */
+/* -------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-surface: var(--surface);
+  --color-surface-elev: var(--surface-elev);
+  --color-border: var(--border);
+  --color-text-hi: var(--text-hi);
+  --color-text-mid: var(--text-mid);
+  --color-text-low: var(--text-low);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-signal-warm: var(--signal-warm);
+  --color-signal-ok: var(--signal-ok);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                       */
+/* -------------------------------------------------------------------------- */
+
+html,
+body {
+  background-color: var(--bg-0);
+  color: var(--text-hi);
+  font-family: var(--font-geist-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: 17px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Selection */
+::selection {
+  background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--text-hi);
+}
+
+/* Focus ring (DESIGN_MOTION §17) */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion: collapse all animation per DESIGN_MOTION §16 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
