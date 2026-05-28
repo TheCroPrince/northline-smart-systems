@@ -1,49 +1,99 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------------------- */
-/* Design tokens                                                              */
-/* Names mirror PRD.md §11 verbatim. Values are the single source of truth.   */
+/* Design tokens — Northline v2 (Editorial Stone)                             */
+/*                                                                            */
+/* Pivot from the earlier dark technical palette to a light, warm, editorial  */
+/* surface. The site is paper-toned by default; dark sections are intentional */
+/* contrast moments, never the baseline.                                      */
 /* -------------------------------------------------------------------------- */
 
 :root {
-  /* Palette */
-  --bg-0: #0a0c10;
-  --bg-1: #10131a;
-  --surface: #171b25;
-  --surface-elev: #1f2530;
-  --border: #2a2f3d;
-  --text-hi: #eaeef5;
-  --text-mid: #a8b0bf;
-  --text-low: #697185;
-  --accent: #3b82f6;
-  --accent-soft: #7dd3fc;
-  --signal-warm: #f5c57b;
-  --signal-ok: #86efac;
+  /* Light paper surfaces */
+  --bg-0: #f0ebe0;            /* warm stone, page base */
+  --bg-1: #e5ddd0;            /* alt stone, denser sections */
+  --surface: #ffffff;          /* pure white, product cards */
+  --surface-2: #faf7ef;        /* off-white, secondary cards */
+  --surface-elev: #ffffff;     /* hovered card */
 
-  /* Shadows (DESIGN_MOTION §5) */
-  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 1px 24px rgba(0, 0, 0, 0.4);
-  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 8px 48px rgba(0, 0, 0, 0.5);
+  /* Dark contrast surfaces (use intentionally, not as default) */
+  --ink-0: #14181a;            /* near-black with green undertone */
+  --ink-1: #1c2122;            /* slightly lifted ink */
+
+  /* Borders */
+  --border: #d5c8b0;
+  --border-soft: #e4d9c5;
+  --border-strong: #b8a98a;
+
+  /* Text on light */
+  --text-hi: #14181a;
+  --text-mid: #5a5f62;
+  --text-low: #8b8f92;
+
+  /* Text on ink */
+  --text-on-ink: #f0ebe0;
+  --text-on-ink-mid: #b8b3a7;
+
+  /* Accent — deep forest teal as the singular brand color */
+  --accent: #0f6f62;
+  --accent-bright: #19a38c;
+  --accent-soft: #c2dcd5;
+  --accent-tint: #e6f0ec;
+
+  /* Sparing warm accent (do not overuse) */
+  --gold: #b69056;
+
+  /* Status */
+  --signal-ok: #3f8d68;
+  --signal-warm: #b9823f;
+
+  /* Soft warm shadows tuned for paper surfaces */
+  --shadow-1:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 8px 28px rgba(50, 38, 20, 0.06),
+    0 1px 2px rgba(50, 38, 20, 0.05);
+  --shadow-2:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 24px 60px rgba(50, 38, 20, 0.12),
+    0 2px 6px rgba(50, 38, 20, 0.08);
+  --shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 12px 36px rgba(50, 38, 20, 0.08);
+  --shadow-card-hover:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 28px 70px rgba(50, 38, 20, 0.14),
+    0 4px 8px rgba(50, 38, 20, 0.06);
 }
 
 /* -------------------------------------------------------------------------- */
 /* Tailwind theme bridge                                                      */
-/* Exposes tokens as Tailwind utilities (bg-bg-0, text-text-hi, font-sans...) */
 /* -------------------------------------------------------------------------- */
 
 @theme inline {
   --color-bg-0: var(--bg-0);
   --color-bg-1: var(--bg-1);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-surface-elev: var(--surface-elev);
+  --color-ink-0: var(--ink-0);
+  --color-ink-1: var(--ink-1);
   --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+  --color-border-strong: var(--border-strong);
   --color-text-hi: var(--text-hi);
   --color-text-mid: var(--text-mid);
   --color-text-low: var(--text-low);
+  --color-text-on-ink: var(--text-on-ink);
+  --color-text-on-ink-mid: var(--text-on-ink-mid);
   --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
   --color-accent-soft: var(--accent-soft);
-  --color-signal-warm: var(--signal-warm);
+  --color-accent-tint: var(--accent-tint);
+  --color-gold: var(--gold);
   --color-signal-ok: var(--signal-ok);
+  --color-signal-warm: var(--signal-warm);
 
+  --font-display: var(--font-instrument-serif);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -64,28 +114,34 @@ body {
 
 body {
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.55;
   font-variant-numeric: tabular-nums;
 }
 
-/* Selection */
 ::selection {
-  background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background-color: color-mix(in srgb, var(--accent) 22%, transparent);
   color: var(--text-hi);
 }
 
-/* Focus ring (DESIGN_MOTION §17) */
 *:focus {
   outline: none;
 }
 
 *:focus-visible {
-  outline: 2px solid var(--accent-soft);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-/* Reduced motion: collapse all animation per DESIGN_MOTION §16 */
+/* Hide scrollbar for horizontal scroll regions but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

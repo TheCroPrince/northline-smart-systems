@@ -4,47 +4,48 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
 interface SectionHeadingProps {
-  /** Optional eyebrow label, e.g. "01 / SERVICES". */
   eyebrow?: ReactNode;
-  /** Main H2 headline. Per COPY_VOICE §5: sentence case, 3-6 words, period-terminated. */
   title: ReactNode;
-  /** Optional supporting line below the headline. */
   subhead?: ReactNode;
-  /** Horizontal alignment. Defaults to left (more architectural per DESIGN_MOTION §9). */
   align?: "left" | "center";
+  /** Color register. `light` is the default (paper surfaces). `ink` for dark sections. */
+  tone?: "light" | "ink";
   className?: string;
 }
 
 /**
- * Composed section heading: eyebrow → headline → subhead, revealed in order.
+ * Composed section heading: eyebrow → serif H2 → optional subhead.
  *
- * Reveal sequence (DESIGN_MOTION §11):
- *  - eyebrow:   fade in immediately on viewport entry
- *  - headline:  rise, offset ~120ms behind eyebrow
- *  - subhead:   fade, offset ~280ms behind eyebrow
- *
- * Typography per DESIGN_MOTION §9. The H2 spans clamped sizes from 44px to 56px.
+ * H2 uses Instrument Serif (var(--font-display)) for editorial weight.
+ * The reveal sequence stays: fade-in eyebrow, rise H2, fade subhead.
  */
 export function SectionHeading({
   eyebrow,
   title,
   subhead,
   align = "left",
+  tone = "light",
   className,
 }: SectionHeadingProps) {
-  const alignment =
-    align === "center" ? "items-center text-center" : "items-start";
+  const alignment = align === "center" ? "items-center text-center" : "items-start";
+  const titleColor = tone === "ink" ? "text-text-on-ink" : "text-text-hi";
+  const subheadColor = tone === "ink" ? "text-text-on-ink-mid" : "text-text-mid";
 
   return (
     <div className={cn("flex flex-col", alignment, className)}>
       {eyebrow ? (
-        <Reveal variant="fade" className="mb-5">
-          <Eyebrow>{eyebrow}</Eyebrow>
+        <Reveal variant="fade" className="mb-6">
+          <Eyebrow tone={tone === "ink" ? "ink" : "accent"}>{eyebrow}</Eyebrow>
         </Reveal>
       ) : null}
 
       <Reveal variant="rise" delay={eyebrow ? 120 : 0}>
-        <h2 className="font-sans text-[2.5rem] leading-[1.05] font-medium tracking-[-0.02em] text-text-hi sm:text-5xl lg:text-[3.5rem]">
+        <h2
+          className={cn(
+            "font-display text-[2.5rem] leading-[1.04] tracking-[-0.015em] sm:text-5xl lg:text-[3.5rem]",
+            titleColor,
+          )}
+        >
           {title}
         </h2>
       </Reveal>
@@ -53,9 +54,9 @@ export function SectionHeading({
         <Reveal
           variant="fade"
           delay={eyebrow ? 280 : 160}
-          className={cn("mt-5 max-w-2xl", align === "center" && "mx-auto")}
+          className={cn("mt-6 max-w-2xl", align === "center" && "mx-auto")}
         >
-          <p className="text-base leading-relaxed text-text-mid sm:text-lg">
+          <p className={cn("text-base leading-relaxed sm:text-lg", subheadColor)}>
             {subhead}
           </p>
         </Reveal>

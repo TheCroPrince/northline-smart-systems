@@ -1,53 +1,48 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
-/**
- * Trust strip. Source: PRD §"Trust strip", COPY_VOICE §"Trust strip".
- *
- * A quiet band that sits immediately after the Hero. Communicates coverage
- * and a small set of credibility markers without "trusted by" logo soup or
- * a carousel. Partner labels render as monochrome wordmarks, not logos.
- *
- * The Trust strip is not a numbered section, so it carries no Eyebrow.
- */
-
 const partners = [
   "Crestron Authorized",
   "Lutron Certified",
-  "Ubiquiti Enterprise Partner",
-  "Licensed low-voltage teams",
+  "Ubiquiti Enterprise",
+  "Licensed low-voltage",
 ] as const;
 
 export function TrustStrip() {
   return (
     <section
       aria-labelledby="trust-strip-statement"
-      className="py-20 sm:py-28 lg:py-32"
+      className="relative border-y border-border-soft bg-bg-0 py-20"
     >
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal variant="fade">
-            <p
-              id="trust-strip-statement"
-              className="text-base leading-relaxed text-text-mid sm:text-lg"
-            >
-              Serving residential and commercial properties across Canada and
-              the United States.
-            </p>
-          </Reveal>
-        </div>
+        <Reveal variant="fade">
+          <p
+            id="trust-strip-statement"
+            className="mx-auto max-w-3xl text-center font-display text-2xl leading-snug text-text-hi sm:text-3xl"
+          >
+            Designing and installing across
+            <span className="italic text-accent"> Canada</span> and the
+            <span className="italic text-accent"> United States</span>.
+          </p>
+        </Reveal>
 
-        <Reveal variant="fade" delay={160} className="mt-12 sm:mt-14">
+        <Reveal variant="fade" delay={160} className="mt-10">
           <ul
             aria-label="Certifications and partner programs"
-            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5"
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3 sm:gap-x-2"
           >
-            {partners.map((label) => (
+            {partners.map((label, i) => (
               <li
                 key={label}
-                className="font-mono text-xs uppercase tracking-[0.18em] text-text-low"
+                className="flex items-center text-sm font-medium text-text-mid"
               >
-                {label}
+                {i > 0 && (
+                  <span
+                    aria-hidden
+                    className="mr-3 size-1 rounded-full bg-border-strong sm:mr-2"
+                  />
+                )}
+                <span>{label}</span>
               </li>
             ))}
           </ul>

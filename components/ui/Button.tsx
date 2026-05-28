@@ -2,19 +2,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "ghost";
 
 interface ButtonProps {
   variant?: Variant;
   className?: string;
   children: ReactNode;
-  /**
-   * If provided, the button renders as a navigation element:
-   *  - `next/link` for relative paths and same-origin hrefs
-   *  - native `<a target="_blank">` for absolute external URLs
-   *
-   * If omitted, the button renders as a native `<button>`.
-   */
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -24,19 +17,24 @@ interface ButtonProps {
 }
 
 const baseStyles =
-  "inline-flex select-none items-center justify-center gap-2 rounded-full px-6 h-11 text-sm font-medium transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex h-12 select-none items-center justify-center gap-2 rounded-full px-7 text-sm font-medium tracking-tight transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:cursor-not-allowed disabled:opacity-60";
 
-/**
- * Hover language per DESIGN_MOTION §14:
- *  - primary: background brightens ~6%, no translate.
- *  - secondary: border opacity rises from 30% to 60%, fill stays transparent.
- *
- * Focus ring is provided globally by `:focus-visible` styles in globals.css.
- */
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-accent text-text-hi hover:bg-[#478AF7]",
-  secondary:
-    "border border-border/30 bg-transparent text-text-hi hover:border-border/60",
+  primary: cn(
+    "bg-ink-0 text-text-on-ink",
+    "shadow-[0_8px_24px_rgba(20,24,26,0.18),0_1px_2px_rgba(20,24,26,0.12)]",
+    "hover:bg-accent hover:shadow-[0_12px_32px_color-mix(in_srgb,var(--accent)_28%,transparent),0_1px_2px_rgba(20,24,26,0.12)]",
+    "hover:-translate-y-0.5 motion-reduce:hover:translate-y-0",
+  ),
+  secondary: cn(
+    "bg-surface text-text-hi border border-border",
+    "hover:border-accent/50 hover:shadow-[var(--shadow-card)]",
+    "hover:-translate-y-0.5 motion-reduce:hover:translate-y-0",
+  ),
+  ghost: cn(
+    "text-text-hi",
+    "hover:text-accent",
+  ),
 };
 
 export function Button({
@@ -55,13 +53,7 @@ export function Button({
     const isExternal = /^(https?:)?\/\//.test(href);
     if (isExternal) {
       return (
-        <a
-          href={href}
-          className={classes}
-          rel="noopener noreferrer"
-          target="_blank"
-          {...aria}
-        >
+        <a href={href} className={classes} rel="noopener noreferrer" target="_blank" {...aria}>
           {children}
         </a>
       );
@@ -74,13 +66,7 @@ export function Button({
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={classes}
-      {...aria}
-    >
+    <button type={type} onClick={onClick} disabled={disabled} className={classes} {...aria}>
       {children}
     </button>
   );

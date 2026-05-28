@@ -1,90 +1,107 @@
+import { ArrowRight } from "lucide-react";
+import { SmartHomeCard } from "@/components/marketing/hero/SmartHomeCard";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { HeroOverlays } from "@/components/marketing/hero/HeroOverlays";
-
-/**
- * Hero. Source: PRD §"Hero spec", DESIGN_MOTION §18, COPY_VOICE §"Hero".
- *
- * Composition:
- *  - Layered background: two soft radial washes (upper-left primary, lower-right
- *    secondary, per DESIGN_MOTION §5) plus a low-opacity grain overlay to
- *    kill banding (DESIGN_MOTION §3).
- *  - Centered text block: locked tagline as H1, two-paragraph subhead, two CTAs.
- *  - Animated overlays positioned around the text (see HeroOverlays).
- *
- * Choreography note: the text content renders statically. The entrance motion
- * is carried by HeroOverlays, which assembles the surrounding motifs over
- * ~1.5s. The text "is there on arrival" — restrained, weighty, composed.
- *
- * CTA wiring (Phase 2.2 placeholders):
- *  - Primary "Book a consultation": no-op button. A consultation modal is
- *    listed as P0 in PRD §7 and will be wired in a later commit.
- *  - Secondary "Explore systems": targets `#services`, which is a future
- *    anchor. Clicking has no effect until the Services section lands.
- */
-
-const GRAIN_BG =
-  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")";
+import { Reveal } from "@/components/ui/Reveal";
+import { WordReveal } from "@/components/ui/WordReveal";
 
 export function Hero() {
   return (
     <section
       id="hero"
       aria-labelledby="hero-headline"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden"
+      className="relative isolate overflow-hidden bg-bg-0"
     >
-      {/* Layered background: radial washes (lower z) */}
+      {/* Atmospheric background */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20"
+        className="absolute inset-0 -z-30"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 18% 8%, rgba(125, 211, 252, 0.06), transparent 60%),
-            radial-gradient(ellipse 70% 50% at 82% 92%, rgba(59, 130, 246, 0.05), transparent 60%),
+            radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+            radial-gradient(ellipse 50% 40% at 10% 90%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 60%),
             var(--bg-0)
           `,
         }}
       />
 
-      {/* Grain overlay (kills gradient banding) */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.035]"
-        style={{ backgroundImage: GRAIN_BG }}
-      />
-
-      {/* Animated overlays */}
-      <HeroOverlays />
-
-      {/* Foreground content */}
-      <Container className="relative z-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1
-            id="hero-headline"
-            className="text-[clamp(2.5rem,7vw,5.5rem)] font-medium leading-[1.04] tracking-[-0.03em] text-text-hi"
-          >
-            Smart systems.
-            <span className="block">Designed to disappear.</span>
-          </h1>
-
-          <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-text-mid sm:text-lg">
-            <p>
-              Northline designs, installs, and monitors the technology behind
-              modern homes and commercial properties across North America.
-            </p>
-            <p>
-              Security, automation, networking, EV. One company. One project
-              lead. One system.
-            </p>
+      <Container className="relative">
+        {/* Minimal top nav */}
+        <header className="flex items-center justify-between py-7">
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-xl tracking-tight text-text-hi">
+              Northline
+            </span>
+            <span className="font-display text-xl italic text-accent">
+              smart systems
+            </span>
           </div>
-
-          <div className="mt-12 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
-            <Button variant="primary" aria-label="Book a consultation">
+          <nav className="hidden items-center gap-8 text-sm font-medium text-text-mid sm:flex">
+            <a href="#services" className="transition-colors hover:text-text-hi">
+              Services
+            </a>
+            <a href="#systems" className="transition-colors hover:text-text-hi">
+              Systems
+            </a>
+            <a href="/portal" className="transition-colors hover:text-text-hi">
+              Portal
+            </a>
+            <Button variant="secondary" className="h-10 px-5 text-xs" href="#contact">
               Book a consultation
             </Button>
-            <Button variant="secondary" href="#services">
-              Explore systems
-            </Button>
+          </nav>
+        </header>
+
+        {/* Hero body — split layout */}
+        <div className="grid items-center gap-12 pb-20 pt-12 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:pb-32 lg:pt-20">
+          {/* Left: text */}
+          <div className="max-w-xl">
+            <Reveal variant="fade">
+              <div className="inline-flex items-center gap-3 rounded-full border border-border bg-surface/70 px-4 py-1.5 backdrop-blur-sm">
+                <span className="size-1.5 rounded-full bg-accent" />
+                <span className="text-xs font-medium tracking-tight text-text-mid">
+                  Now serving Canada and the United States
+                </span>
+              </div>
+            </Reveal>
+
+            <h1
+              id="hero-headline"
+              className="mt-7 font-display text-[3.5rem] leading-[0.96] tracking-[-0.025em] text-text-hi sm:text-[5rem] lg:text-[6.5rem]"
+            >
+              <WordReveal>Smart systems.</WordReveal>
+              <span className="block italic text-accent">
+                <WordReveal delay={400}>Designed to disappear.</WordReveal>
+              </span>
+            </h1>
+
+            <Reveal variant="fade" delay={1100}>
+              <p className="mt-8 max-w-lg text-lg leading-relaxed text-text-mid">
+                Northline designs, installs, and monitors the technology behind
+                modern homes and commercial properties. One company, one
+                project lead, one system you can trust to recede into the
+                architecture.
+              </p>
+            </Reveal>
+
+            <Reveal variant="fade" delay={1250}>
+              <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                <Button variant="primary">
+                  Book a consultation
+                  <ArrowRight size={16} strokeWidth={2} aria-hidden />
+                </Button>
+                <Button variant="secondary" href="#systems">
+                  See how it works
+                </Button>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right: smart-home product card */}
+          <div className="relative">
+            <Reveal variant="fade" delay={600}>
+              <SmartHomeCard />
+            </Reveal>
           </div>
         </div>
       </Container>

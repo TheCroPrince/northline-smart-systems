@@ -6,6 +6,7 @@ import {
   Radar,
   Server,
   Shield,
+  Sparkles,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
@@ -15,28 +16,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
 
-/**
- * Services. Source: PRD §"Services", COPY_VOICE §"Services".
- *
- * Eight service domains in a 1 / 2 / 4 responsive grid. Cards are static
- * (no destination yet — deep service routes are P2 per PRD §7) so they
- * use the non-interactive GlassCard variant.
- *
- * Per-card stagger: each card is wrapped in its own Reveal with an
- * 80ms delay step, matching DESIGN_MOTION §10 `stagger.default`.
- *
- * Icon treatment: monochrome `text-text-mid` across the board, with the
- * single exception of Intelligent Automation in `text-accent-soft`. This
- * is the "subtly distinct" differentiation the brief asks for, without
- * loading the rest of the grid with decorative accent.
- */
-
 interface Service {
   title: string;
   description: string;
   Icon: LucideIcon;
-  /** True if this card should receive the accent-soft icon tint. */
-  highlightIcon?: boolean;
+  spotlight?: boolean;
 }
 
 const services: Service[] = [
@@ -63,7 +47,7 @@ const services: Service[] = [
     description:
       "Scheduled, event-driven, and occupancy-aware routines configured around the household or operation.",
     Icon: Workflow,
-    highlightIcon: true,
+    spotlight: true,
   },
   {
     title: "Commercial Networking",
@@ -96,24 +80,32 @@ export function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-24 sm:py-32 lg:py-40"
+      className="relative bg-bg-0 py-24 sm:py-32 lg:py-40"
     >
       <Container>
-        <SectionHeading
-          eyebrow="01 / SERVICES"
-          title={<span id="services-heading">What we build.</span>}
-          subhead="Each category is staffed by people who do it as their full-time work, not as a side service."
-        />
+        <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.85fr]">
+          <SectionHeading
+            eyebrow="Services"
+            title={
+              <span id="services-heading">
+                What we build,
+                <span className="italic text-accent"> end to end.</span>
+              </span>
+            }
+            subhead="Each category is staffed by people who do it as their full-time work. We design, install, commission, and monitor — without subcontracting the parts that matter."
+            className="max-w-2xl"
+          />
+        </div>
 
         <ul
-          className="mt-16 grid grid-cols-1 gap-4 sm:mt-20 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6"
+          className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4"
           aria-label="Service categories"
         >
           {services.map((service, index) => (
             <Reveal
               key={service.title}
               variant="rise"
-              delay={index * 80}
+              delay={index * 70}
               className="h-full"
             >
               <ServiceCard service={service} />
@@ -126,26 +118,64 @@ export function Services() {
 }
 
 function ServiceCard({ service }: { service: Service }) {
-  const { Icon, title, description, highlightIcon } = service;
+  const { Icon, title, description, spotlight } = service;
+
   return (
     <GlassCard
       as="li"
-      className="flex h-full flex-col p-6 lg:p-7"
+      className={cn(
+        "flex h-full flex-col p-7",
+        spotlight && "border-accent/30 shadow-[var(--shadow-card-hover)]",
+      )}
     >
-      <Icon
-        aria-hidden
-        size={28}
-        strokeWidth={1.5}
-        className={cn(
-          highlightIcon ? "text-accent-soft" : "text-text-mid",
-        )}
-      />
-      <h3 className="mt-8 text-lg font-medium tracking-[-0.01em] text-text-hi">
+      {/* Spotlight glow for featured card */}
+      {spotlight ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%)",
+          }}
+        />
+      ) : null}
+
+      {/* Dotted texture under spotlight card */}
+      {spotlight ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, color-mix(in srgb, var(--accent) 24%, transparent) 1px, transparent 1px)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+      ) : null}
+
+      <div className="flex items-start justify-between">
+        <div
+          className={cn(
+            "flex size-14 items-center justify-center rounded-2xl",
+            spotlight
+              ? "bg-accent text-text-on-ink"
+              : "bg-accent-tint text-accent",
+          )}
+        >
+          <Icon size={26} strokeWidth={1.5} aria-hidden />
+        </div>
+        {spotlight ? (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-tint px-3 py-1 text-xs font-medium text-accent">
+            <Sparkles size={12} strokeWidth={2} aria-hidden />
+            Signature
+          </span>
+        ) : null}
+      </div>
+
+      <h3 className="mt-10 font-display text-[1.75rem] leading-[1.1] tracking-tight text-text-hi">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-text-mid">
-        {description}
-      </p>
+      <p className="mt-3 text-sm leading-relaxed text-text-mid">{description}</p>
     </GlassCard>
   );
 }
