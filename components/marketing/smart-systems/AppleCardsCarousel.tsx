@@ -4,13 +4,11 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  BatteryCharging,
   Lightbulb,
   Lock,
   Plus,
   Radar,
   Sparkles,
-  Wifi,
   X,
 } from "lucide-react";
 import Image from "next/image";
@@ -83,7 +81,7 @@ const capabilities: Capability[] = [
     title: "Charging, load-aware.",
     description:
       "Level 2 and Level 3 chargers installed alongside panel coordination, so the rest of the property keeps its capacity while a vehicle charges. Sized once, correctly.",
-    image: "/Images/city-train.jpg",
+    image: "/Images/carousel/EV-Component.png",
     points: [
       "Panel and service load assessed before install",
       "Charging that yields to household demand",
@@ -487,32 +485,14 @@ function AccessVisual() {
 
 function EvVisual() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center p-5">
-      <div className="w-full max-w-[260px] rounded-2xl border border-border-soft bg-surface p-5 shadow-[var(--shadow-card)]">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <BatteryCharging size={14} strokeWidth={1.75} className="text-accent" aria-hidden />
-            <span className="text-xs font-medium text-text-hi">EV Charger · L2</span>
-          </div>
-          <span className="rounded-full bg-accent-tint px-2 py-0.5 text-[10px] font-medium text-accent">
-            Charging
-          </span>
-        </div>
-        <div className="mt-5 flex items-baseline gap-1">
-          <span className="font-display text-5xl leading-none tracking-tight text-text-hi">
-            82
-          </span>
-          <span className="text-sm font-medium text-text-mid">%</span>
-        </div>
-        <p className="mt-1 text-xs text-text-mid">9.6 kW · 38 min to full</p>
-        <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-bg-1">
-          <div className="h-full rounded-full bg-accent" style={{ width: "82%" }} />
-        </div>
-        <div className="mt-4 flex items-center justify-between text-xs">
-          <span className="text-text-mid">Panel load</span>
-          <span className="font-medium text-text-hi">68 / 200 A</span>
-        </div>
-      </div>
+    <div className="absolute inset-0">
+      <Image
+        src="/Images/carousel/EV-inside-component.png"
+        alt="EV charging detail"
+        fill
+        sizes="(max-width: 1024px) 90vw, 30rem"
+        className="object-cover"
+      />
     </div>
   );
 }

@@ -1,68 +1,66 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------------------- */
-/* Design tokens — Northline v2 (Editorial Stone)                             */
+/* Design tokens — Northline v3 (Dark Warm)                                   */
 /*                                                                            */
-/* Pivot from the earlier dark technical palette to a light, warm, editorial  */
-/* surface. The site is paper-toned by default; dark sections are intentional */
-/* contrast moments, never the baseline.                                      */
+/* A dark, warm, premium base — espresso/ink with a brighter teal accent and  */
+/* warm cream text. Dark is required for the lamp/canvas-text moments to read. */
+/* Warm undertones + teal + serif keep it distinct from the cold Armatir look.*/
+/* Reversible: only these token values changed.                               */
 /* -------------------------------------------------------------------------- */
 
 :root {
-  /* Light paper surfaces */
-  --bg-0: #f0ebe0;            /* warm stone, page base */
-  --bg-1: #e5ddd0;            /* alt stone, denser sections */
-  --surface: #ffffff;          /* pure white, product cards */
-  --surface-2: #faf7ef;        /* off-white, secondary cards */
-  --surface-elev: #ffffff;     /* hovered card */
+  /* Base surfaces (warm dark) */
+  --bg-0: #14130f;            /* page base, warm near-black */
+  --bg-1: #1b1a14;            /* alt sections */
+  --surface: #201e17;          /* cards */
+  --surface-2: #272419;        /* secondary cards */
+  --surface-elev: #2d2a1f;     /* hovered card */
 
-  /* Dark contrast surfaces (use intentionally, not as default) */
-  --ink-0: #14181a;            /* near-black with green undertone */
-  --ink-1: #1c2122;            /* slightly lifted ink */
+  /* Deepest darks (lamp background, footer, contrast) */
+  --ink-0: #0c0b08;
+  --ink-1: #15140e;
 
-  /* Borders */
-  --border: #d5c8b0;
-  --border-soft: #e4d9c5;
-  --border-strong: #b8a98a;
+  /* Borders (warm, visible on dark) */
+  --border: #37342a;
+  --border-soft: #2b291f;
+  --border-strong: #4a4636;
 
-  /* Text on light */
-  --text-hi: #14181a;
-  --text-mid: #5a5f62;
-  --text-low: #8b8f92;
+  /* Text */
+  --text-hi: #f3eede;          /* warm cream */
+  --text-mid: #aca695;         /* warm gray */
+  --text-low: #7d7868;
 
-  /* Text on ink */
-  --text-on-ink: #f0ebe0;
-  --text-on-ink-mid: #b8b3a7;
+  /* Text on ink (same register now that the whole site is dark) */
+  --text-on-ink: #f3eede;
+  --text-on-ink-mid: #aca695;
 
-  /* Accent — deep forest teal as the singular brand color */
-  --accent: #0f6f62;
-  --accent-bright: #19a38c;
-  --accent-soft: #c2dcd5;
-  --accent-tint: #e6f0ec;
+  /* Accent — teal, brightened so it pops on dark */
+  --accent: #34b39a;
+  --accent-bright: #5fd6bb;
+  --accent-soft: #9fe2d2;
+  --accent-tint: #16302a;      /* dark teal tint for capsules/badges */
 
-  /* Sparing warm accent (do not overuse) */
-  --gold: #b69056;
+  /* Warm gold, sparingly */
+  --gold: #d6a861;
 
   /* Status */
-  --signal-ok: #3f8d68;
-  --signal-warm: #b9823f;
+  --signal-ok: #5cc08e;
+  --signal-warm: #d39a4e;
 
-  /* Soft warm shadows tuned for paper surfaces */
+  /* Shadows — subtle on dark; depth comes from borders + glows */
   --shadow-1:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 8px 28px rgba(50, 38, 20, 0.06),
-    0 1px 2px rgba(50, 38, 20, 0.05);
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 10px 30px rgba(0, 0, 0, 0.45);
   --shadow-2:
-    0 1px 0 rgba(255, 255, 255, 0.85) inset,
-    0 24px 60px rgba(50, 38, 20, 0.12),
-    0 2px 6px rgba(50, 38, 20, 0.08);
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 28px 70px rgba(0, 0, 0, 0.55);
   --shadow-card:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 12px 36px rgba(50, 38, 20, 0.08);
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 14px 38px rgba(0, 0, 0, 0.45);
   --shadow-card-hover:
-    0 1px 0 rgba(255, 255, 255, 0.95) inset,
-    0 28px 70px rgba(50, 38, 20, 0.14),
-    0 4px 8px rgba(50, 38, 20, 0.06);
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -119,7 +117,7 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--accent) 22%, transparent);
+  background-color: color-mix(in srgb, var(--accent) 30%, transparent);
   color: var(--text-hi);
 }
 
@@ -128,18 +126,28 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-bright);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* Hide scrollbar for horizontal scroll regions but keep functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Dotted-glow card twinkle (see components/ui/glowing-stars.tsx) */
+@keyframes nl-twinkle {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.9);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

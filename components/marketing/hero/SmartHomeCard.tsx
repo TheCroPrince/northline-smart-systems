@@ -1,5 +1,14 @@
 "use client";
 
+/**
+ * PRESERVED — not currently mounted.
+ *
+ * This was the v2/v2.1 hero "device surface" visual. The hero now uses a lamp
+ * header + Canvas Text instead (per the v3 correction pass). Kept on disk in
+ * case a side/hero product visual is reintroduced later. Safe to delete if it
+ * is decided this direction won't return.
+ */
+
 import { motion, useReducedMotion } from "framer-motion";
 import { Bell, Lightbulb, Lock, Music, Wifi } from "lucide-react";
 
