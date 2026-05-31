@@ -41,7 +41,7 @@ export function formatDate(
   iso: string,
   style: "short" | "long" = "long",
 ): string {
-  const date = new Date(iso);
+  const date = parseDate(iso);
   if (style === "short") {
     return date.toLocaleDateString("en-US", {
       month: "short",
@@ -72,6 +72,16 @@ export function formatTime(iso: string): string {
 // ---------------------------------------------------------------------------
 // Internal
 // ---------------------------------------------------------------------------
+
+function parseDate(iso: string): Date {
+  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (dateOnly) {
+    const [, year, month, day] = dateOnly;
+    return new Date(Number(year), Number(month) - 1, Number(day));
+  }
+
+  return new Date(iso);
+}
 
 function formatRelativeDisplay(
   secondsAgo: number,
