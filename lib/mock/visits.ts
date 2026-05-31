@@ -46,3 +46,7 @@ export function getNextVisitForProperty(propertyId: string): Visit | undefined {
   return visits.find((visit) => visit.propertyId === propertyId);
 }
 
+export function getVisitById(id: string): Visit | undefined {
+  return visits.find((visit) => visit.id === id);
+}
+

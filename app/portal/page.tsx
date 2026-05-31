@@ -4,16 +4,14 @@ import { PortalShell } from "@/components/portal/PortalShell";
 import { getAutomationRulesForProperty } from "@/lib/mock/automations";
 import { getRecentEventsForProperty } from "@/lib/mock/events";
 import { getMetricsForProperty } from "@/lib/mock/metrics";
-import {
-  getPrimaryThreadForProperty,
-  getTechnicianById,
-} from "@/lib/mock/messages";
+import { getTechnicianById } from "@/lib/mock/messages";
 import {
   getDefaultProperty,
   getPropertyById,
   properties,
 } from "@/lib/mock/properties";
 import { portalConfig } from "@/lib/mock/portal";
+import { getPrimarySupportRequestForProperty } from "@/lib/mock/support";
 import { getNextVisitForProperty } from "@/lib/mock/visits";
 
 export const dynamic = "force-dynamic";
@@ -43,7 +41,7 @@ export default async function PortalHome({ searchParams }: PortalHomeProps) {
   const metrics = getMetricsForProperty(currentProperty.id);
   const events = getRecentEventsForProperty(currentProperty.id, 12);
   const visit = getNextVisitForProperty(currentProperty.id);
-  const thread = getPrimaryThreadForProperty(currentProperty.id);
+  const supportRequest = getPrimarySupportRequestForProperty(currentProperty.id);
   const technician = getTechnicianById(currentProperty.assignedTechnicianId);
   const automations = getAutomationRulesForProperty(currentProperty.id);
 
@@ -58,7 +56,7 @@ export default async function PortalHome({ searchParams }: PortalHomeProps) {
         metrics={metrics}
         events={events}
         visit={visit}
-        thread={thread}
+        supportRequest={supportRequest}
         technician={technician}
         automations={automations}
         now={new Date()}

@@ -15,7 +15,11 @@ interface PortalShellProps {
 }
 
 /** Tabs that have a real route built. Others render as disabled placeholders. */
-const BUILT_TABS: ReadonlySet<PortalTab> = new Set(["overview", "devices"]);
+const BUILT_TABS: ReadonlySet<PortalTab> = new Set([
+  "overview",
+  "devices",
+  "support",
+]);
 
 /** Route for a tab. Overview is the portal root; others are nested. */
 function tabPath(tab: PortalTab): string {

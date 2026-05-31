@@ -18,8 +18,9 @@ import { formatDate, formatTime, resolveRelative } from "@/lib/time";
 import type { AutomationRule } from "@/lib/mock/automations";
 import type { FeedEvent } from "@/lib/mock/events";
 import type { KpiCard, PropertyMetrics } from "@/lib/mock/metrics";
-import type { Technician, Thread } from "@/lib/mock/messages";
+import type { Technician } from "@/lib/mock/messages";
 import type { Property } from "@/lib/mock/properties";
+import type { SupportRequest, SupportStatus } from "@/lib/mock/support";
 import type { Visit } from "@/lib/mock/visits";
 
 interface OverviewTabProps {
@@ -27,7 +28,7 @@ interface OverviewTabProps {
   metrics: PropertyMetrics;
   events: FeedEvent[];
   visit?: Visit;
-  thread?: Thread;
+  supportRequest?: SupportRequest;
   technician?: Technician;
   automations: AutomationRule[];
   now: Date;
@@ -38,7 +39,7 @@ export function OverviewTab({
   metrics,
   events,
   visit,
-  thread,
+  supportRequest,
   technician,
   automations,
   now,
@@ -55,7 +56,7 @@ export function OverviewTab({
         <aside className="space-y-4 lg:sticky lg:top-36 lg:self-start">
           <PropertyRecord property={property} technician={technician} />
           <VisitPanel visit={visit} technician={technician} />
-          <SupportPanel thread={thread} technician={technician} now={now} />
+          <SupportPanel request={supportRequest} technician={technician} now={now} />
           <AutomationPanel automations={automations} />
         </aside>
       </section>
@@ -370,15 +371,15 @@ function VisitPanel({
 }
 
 function SupportPanel({
-  thread,
+  request,
   technician,
   now,
 }: {
-  thread?: Thread;
+  request?: SupportRequest;
   technician?: Technician;
   now: Date;
 }) {
-  const latestMessage = thread?.messages.at(-1);
+  const latestMessage = request?.messages.at(-1);
   const latestTime =
     latestMessage?.sentAtMinutesAgo !== undefined
       ? resolveRelative(latestMessage.sentAtMinutesAgo * 60, now).display
@@ -396,14 +397,16 @@ function SupportPanel({
         <MessageSquare size={20} strokeWidth={1.7} className="text-accent-soft" />
       </div>
 
-      {thread ? (
+      {request ? (
         <div className="mt-5">
           <div className="flex items-center justify-between gap-3">
             <p className="min-w-0 truncate text-sm font-medium text-text-hi">
-              {thread.subject}
+              {request.title}
             </p>
-            <StatusPill tone={thread.status === "resolved" ? "muted" : "notice"}>
-              {threadStatusLabel(thread.status)}
+            <StatusPill
+              tone={request.status === "awaiting_you" ? "notice" : "healthy"}
+            >
+              {supportStatusLabel(request.status)}
             </StatusPill>
           </div>
           {latestMessage ? (
@@ -414,7 +417,9 @@ function SupportPanel({
           <p className="mt-4 font-mono text-xs text-text-low">{latestTime}</p>
         </div>
       ) : (
-        <p className="mt-5 text-sm text-text-mid">No new messages.</p>
+        <p className="mt-5 text-sm text-text-mid">
+          No open requests. Everything is running normally.
+        </p>
       )}
     </section>
   );
@@ -531,8 +536,9 @@ function statusLabel(status: string): string {
     .join(" ");
 }
 
-function threadStatusLabel(status: Thread["status"]): string {
-  if (status === "awaiting_client") return "Awaiting client";
+function supportStatusLabel(status: SupportStatus): string {
+  if (status === "awaiting_you") return "Awaiting you";
+  if (status === "in_progress") return "In progress";
   return statusLabel(status);
 }
 
