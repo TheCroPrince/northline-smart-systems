@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="remote-monitoring-title remote-monitoring-desc">
+  <title id="remote-monitoring-title">Remote Monitoring</title>
+  <desc id="remote-monitoring-desc">Continuous operational awareness and health visibility.</desc>
+  <rect width="1024" height="1024" fill="#0c0b08"/>
+  <g id="remote-monitoring" fill="none">
+<rect x="286" y="314" width="452" height="396" rx="90" ry="90" fill="none" stroke="#f3eede" stroke-width="44"/>
+<path d="M 358 552 C 426 498 482 596 546 542 S 650 502 704 558" fill="none" stroke="#57d1ba" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="620" cy="448" r="66" fill="none" stroke="#aca695" stroke-width="36"/>
+<path d="M 620 396 V 448 H 670" fill="none" stroke="#57d1ba" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="358" y1="438" x2="458" y2="438" stroke="#aca695" stroke-width="32" stroke-linecap="round"/>
+<line x1="358" y1="494" x2="426" y2="494" stroke="#4a4636" stroke-width="30" stroke-linecap="round" opacity="0.82"/>
+<circle cx="704" cy="558" r="17" fill="#57d1ba"/>
+  </g>
+</svg>

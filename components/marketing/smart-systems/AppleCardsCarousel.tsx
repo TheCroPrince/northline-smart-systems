@@ -1,35 +1,22 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Lightbulb,
-  Lock,
-  Plus,
-  Radar,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import Image from "next/image";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
-import { cn } from "@/lib/cn";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Capability {
   id: string;
   eyebrow: string;
   title: string;
   description: string;
-  /** Public path (capital "Images" for deploy case-safety). null → gradient. */
-  image: string | null;
   points: string[];
-  Visual: () => ReactNode;
+  /** Card scene image (public path, capital "Images" for deploy case-safety). */
+  image: string;
+  /** Image shown in the expanded modal's detail panel. */
+  insideImage: string;
+  /** object-position for the card crop (landscape source in a tall card). */
+  objectPosition: string;
 }
 
 const capabilities: Capability[] = [
@@ -39,13 +26,14 @@ const capabilities: Capability[] = [
     title: "Eyes on every system.",
     description:
       "Around-the-clock health monitoring with classification, alerts, and dispatch handled by the team that installed it. Every device reports in, and anything out of range resolves to a clear next action.",
-    image: "/Images/carousel/monitor-carousel.jpg",
     points: [
       "Live health across every connected device",
       "Events classified before they reach you",
       "On-call response with a defined window",
     ],
-    Visual: MonitoringVisual,
+    image: "/Images/carousel/monitoring.jpg",
+    insideImage: "/Images/carousel/monitoring-inside.jpg",
+    objectPosition: "50% 45%",
   },
   {
     id: "network",
@@ -53,13 +41,14 @@ const capabilities: Capability[] = [
     title: "The backbone, sized right.",
     description:
       "Enterprise-grade Wi-Fi, switching, and segmentation tuned to the property and the systems running on it. The network is designed first, because everything else depends on it.",
-    image: "/Images/carousel/network-carousel.jpg",
     points: [
       "Coverage mapped to the building, not guessed",
       "Isolated segments for cameras, control, and guests",
       "Redundant uplinks with automatic failover",
     ],
-    Visual: NetworkVisual,
+    image: "/Images/carousel/network.jpg",
+    insideImage: "/Images/carousel/network-inside.jpg",
+    objectPosition: "50% 50%",
   },
   {
     id: "access",
@@ -67,13 +56,14 @@ const capabilities: Capability[] = [
     title: "Quiet, accountable entry.",
     description:
       "Cameras, intrusion, and reader systems designed around how the property is actually used. Entry is logged, attributed, and reviewable, without turning the place into a checkpoint.",
-    image: "/Images/carousel/access-carousel.jpg",
     points: [
       "Readers and cameras placed around real routines",
       "Every entry attributed and time-stamped",
       "Arming that follows the household schedule",
     ],
-    Visual: AccessVisual,
+    image: "/Images/carousel/access.jpg",
+    insideImage: "/Images/carousel/access-inside.jpg",
+    objectPosition: "50% 55%",
   },
   {
     id: "ev",
@@ -81,13 +71,14 @@ const capabilities: Capability[] = [
     title: "Charging, load-aware.",
     description:
       "Level 2 and Level 3 chargers installed alongside panel coordination, so the rest of the property keeps its capacity while a vehicle charges. Sized once, correctly.",
-    image: "/Images/carousel/EV-Component.png",
     points: [
       "Panel and service load assessed before install",
       "Charging that yields to household demand",
       "Ready for a second charger when you are",
     ],
-    Visual: EvVisual,
+    image: "/Images/carousel/ev.jpg",
+    insideImage: "/Images/carousel/ev-inside.jpg",
+    objectPosition: "58% 50%",
   },
   {
     id: "lighting",
@@ -95,13 +86,14 @@ const capabilities: Capability[] = [
     title: "Scenes for the way you live.",
     description:
       "Lighting and shade control commissioned with a real walkthrough, not a smartphone preset. Scenes are tuned room by room until the space feels right at every hour.",
-    image: "/Images/smart-home-integration.jpg",
     points: [
       "Fixtures and keypads planned with the architecture",
       "Scenes tuned on site, not from a catalog",
       "Daylight-aware shades that track the sun",
     ],
-    Visual: LightingVisual,
+    image: "/Images/carousel/lighting.jpg",
+    insideImage: "/Images/carousel/lighting-inside.jpg",
+    objectPosition: "42% 45%",
   },
   {
     id: "automation",
@@ -109,13 +101,14 @@ const capabilities: Capability[] = [
     title: "Routines worth keeping.",
     description:
       "Scheduled, event-driven, and occupancy-aware routines configured around the household or operation. The system does the noticing, so the day takes fewer decisions.",
-    image: "/Images/tablet-tech-image.jpg",
     points: [
       "Triggers from time, occupancy, and events",
       "Routines you can read and adjust",
       "Tuned against how the space is actually used",
     ],
-    Visual: AutomationVisual,
+    image: "/Images/carousel/automation.jpg",
+    insideImage: "/Images/carousel/automation-inside.jpg",
+    objectPosition: "40% 45%",
   },
 ];
 
@@ -191,12 +184,20 @@ function Card({ cap, onOpen }: { cap: Capability; onOpen: () => void }) {
       aria-label={`${cap.eyebrow}: ${cap.title} — open details`}
       className="group relative h-[26rem] w-[80vw] shrink-0 snap-start overflow-hidden rounded-[1.75rem] border border-ink-1 bg-ink-1 text-left sm:h-[32rem] sm:w-[21rem] lg:h-[34rem] lg:w-[23rem]"
     >
-      <CardBackground image={cap.image} />
+      <Image
+        src={cap.image}
+        alt=""
+        fill
+        sizes="(max-width: 640px) 80vw, 23rem"
+        style={{ objectPosition: cap.objectPosition }}
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+      />
 
-      {/* legibility gradient */}
+      {/* Legibility gradient — strongest at the bottom where the title sits,
+          light through the middle so the photo stays visible. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/40"
+        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/45"
       />
 
       <div className="relative z-10 flex h-full flex-col p-7">
@@ -213,30 +214,6 @@ function Card({ cap, onOpen }: { cap: Capability; onOpen: () => void }) {
         </span>
       </div>
     </motion.button>
-  );
-}
-
-function CardBackground({ image }: { image: string | null }) {
-  if (!image) {
-    return (
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(160deg, var(--accent) 0%, var(--ink-0) 70%)",
-        }}
-      />
-    );
-  }
-  return (
-    <Image
-      src={image}
-      alt=""
-      fill
-      sizes="(max-width: 640px) 80vw, 23rem"
-      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-    />
   );
 }
 
@@ -292,12 +269,19 @@ function Modal({ cap, onClose }: { cap: Capability | null; onClose: () => void }
                 <X size={18} strokeWidth={2} aria-hidden />
               </button>
 
-              {/* Image header (image + eyebrow + title repeated from the card) */}
+              {/* Image header (scene image + eyebrow + title) */}
               <div className="relative h-64 w-full overflow-hidden sm:h-72">
-                <CardBackground image={cap.image} />
+                <Image
+                  src={cap.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                  style={{ objectPosition: cap.objectPosition }}
+                  className="object-cover"
+                />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/30"
+                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/35"
                 />
                 <div className="absolute bottom-0 left-0 p-7 sm:p-8">
                   <div className="flex items-center gap-2.5">
@@ -333,9 +317,16 @@ function Modal({ cap, onClose }: { cap: Capability | null; onClose: () => void }
                   </ul>
                 </div>
 
-                {/* Bespoke product visual */}
-                <div className="relative min-h-[240px] overflow-hidden rounded-2xl border border-border-soft bg-bg-1">
-                  <cap.Visual />
+                {/* Detail photo */}
+                <div className="relative min-h-[220px] overflow-hidden rounded-2xl border border-border-soft bg-bg-1 lg:min-h-full">
+                  <Image
+                    src={cap.insideImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 22rem"
+                    style={{ objectPosition: cap.objectPosition }}
+                    className="object-cover"
+                  />
                 </div>
               </motion.div>
             </motion.div>
@@ -370,202 +361,5 @@ function NavButton({
     >
       <Icon size={18} strokeWidth={1.75} aria-hidden />
     </button>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Bespoke product visuals (rendered inside the expanded modal)                */
-/* -------------------------------------------------------------------------- */
-
-function MonitoringVisual() {
-  const rows = [
-    { label: "Side yard camera", status: "Healthy" },
-    { label: "Main switch", status: "Healthy" },
-    { label: "Front reader", status: "Updating" },
-    { label: "Garage motion", status: "Healthy" },
-  ];
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-5">
-      <div className="w-full max-w-[280px] rounded-2xl border border-border-soft bg-surface p-4 shadow-[var(--shadow-card)]">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Radar size={14} strokeWidth={1.75} className="text-accent" aria-hidden />
-            <p className="text-xs font-medium text-text-hi">Health · live</p>
-          </div>
-          <span className="rounded-full bg-signal-ok/10 px-2 py-0.5 text-[10px] font-medium text-signal-ok">
-            All ok
-          </span>
-        </div>
-        <ul className="mt-3 space-y-2">
-          {rows.map((r) => (
-            <li key={r.label} className="flex items-center justify-between text-xs">
-              <span className="text-text-mid">{r.label}</span>
-              <span className="flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full bg-signal-ok" />
-                <span className="font-medium text-text-hi">{r.status}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function NetworkVisual() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-4">
-      <svg viewBox="0 0 320 220" className="size-full max-w-[300px]">
-        <defs>
-          <radialGradient id="modal-net-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--accent-bright)" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="var(--accent-bright)" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="160" cy="110" r="80" fill="url(#modal-net-glow)" />
-        <g stroke="var(--accent)" strokeOpacity="0.45" strokeWidth="1" fill="none">
-          <path d="M 50 60 Q 110 80 160 110" />
-          <path d="M 270 50 Q 220 80 160 110" />
-          <path d="M 40 170 Q 100 140 160 110" />
-          <path d="M 280 170 Q 220 140 160 110" />
-          <path d="M 160 30 Q 160 70 160 110" />
-          <path d="M 160 190 Q 160 150 160 110" />
-        </g>
-        {[
-          [50, 60],
-          [270, 50],
-          [40, 170],
-          [280, 170],
-          [160, 30],
-          [160, 190],
-        ].map(([cx, cy]) => (
-          <g key={`${cx}-${cy}`}>
-            <circle cx={cx} cy={cy} r="7" fill="var(--surface)" stroke="var(--border)" />
-            <circle cx={cx} cy={cy} r="3" fill="var(--accent)" />
-          </g>
-        ))}
-        <circle cx="160" cy="110" r="16" fill="var(--accent)" />
-      </svg>
-    </div>
-  );
-}
-
-function AccessVisual() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-5">
-      <div className="w-full max-w-[240px] rounded-2xl border border-border-soft bg-surface p-5 shadow-[var(--shadow-card)]">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-text-low">Front entrance</span>
-          <Lock size={14} strokeWidth={1.75} className="text-accent" aria-hidden />
-        </div>
-        <div className="mt-5 flex justify-center">
-          <div className="grid size-20 place-items-center rounded-full border-2 border-accent/40 bg-accent-tint">
-            <div className="grid size-12 place-items-center rounded-full bg-accent text-white">
-              <Lock size={22} strokeWidth={1.5} aria-hidden />
-            </div>
-          </div>
-        </div>
-        <div className="mt-5 space-y-2 text-xs">
-          <div className="flex items-center justify-between">
-            <span className="text-text-mid">Last entry</span>
-            <span className="font-medium text-text-hi">M. Roth · 7:42 AM</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-text-mid">State</span>
-            <span className="flex items-center gap-1.5 font-medium text-signal-ok">
-              <span className="size-1.5 rounded-full bg-signal-ok" />
-              Armed
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function EvVisual() {
-  return (
-    <div className="absolute inset-0">
-      <Image
-        src="/Images/carousel/EV-inside-component.png"
-        alt="EV charging detail"
-        fill
-        sizes="(max-width: 1024px) 90vw, 30rem"
-        className="object-cover"
-      />
-    </div>
-  );
-}
-
-function LightingVisual() {
-  const scenes = ["Morning", "Day", "Evening", "Night"];
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-5">
-      <div className="w-full max-w-[280px] rounded-2xl border border-border-soft bg-surface p-5 shadow-[var(--shadow-card)]">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Lightbulb size={14} strokeWidth={1.75} className="text-accent" aria-hidden />
-            <span className="text-xs font-medium text-text-hi">Living room</span>
-          </div>
-          <span className="text-xs text-text-mid">62%</span>
-        </div>
-        <div className="relative mt-5 h-16 overflow-hidden rounded-xl bg-gradient-to-r from-[#f5ecdb] via-[#f0c98a] to-[#d9941d]">
-          <div className="absolute inset-y-0 left-[62%] w-px bg-text-hi/40">
-            <div className="absolute -left-1.5 top-1/2 size-3 -translate-y-1/2 rounded-full border-2 border-text-hi/50 bg-surface" />
-          </div>
-        </div>
-        <div className="mt-4 grid grid-cols-4 gap-1.5">
-          {scenes.map((scene, i) => (
-            <span
-              key={scene}
-              className={
-                i === 2
-                  ? "rounded-lg bg-ink-0 px-2 py-1.5 text-center text-[10px] font-medium text-white"
-                  : "rounded-lg border border-border-soft bg-surface-2 px-2 py-1.5 text-center text-[10px] font-medium text-text-mid"
-              }
-            >
-              {scene}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AutomationVisual() {
-  const steps = [
-    { time: "6:30 PM", action: "Lighting · Evening scene" },
-    { time: "7:00 PM", action: "Shades · Lower main floor" },
-    { time: "10:00 PM", action: "Access · Arm perimeter" },
-    { time: "10:15 PM", action: "Climate · Drop to 68°" },
-  ];
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-5">
-      <div className="w-full max-w-[280px] rounded-2xl border border-border-soft bg-surface p-5 shadow-[var(--shadow-card)]">
-        <div className="flex items-center gap-2">
-          <Sparkles size={14} strokeWidth={1.75} className="text-accent" aria-hidden />
-          <span className="text-xs font-medium text-text-hi">Evening routine</span>
-        </div>
-        <ol className="mt-4 space-y-3">
-          {steps.map((step, i) => (
-            <li key={step.time} className="flex items-start gap-3">
-              <div className="flex flex-col items-center">
-                <span className="grid size-5 place-items-center rounded-full bg-accent text-[9px] font-semibold text-white">
-                  {i + 1}
-                </span>
-                {i < steps.length - 1 && <span className="mt-1 h-3 w-px bg-border" />}
-              </div>
-              <div className="-mt-0.5">
-                <p className="text-[10px] font-medium uppercase tracking-wide text-text-low">
-                  {step.time}
-                </p>
-                <p className="text-xs font-medium text-text-hi">{step.action}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </div>
   );
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="structured-cabling-title structured-cabling-desc">
+  <title id="structured-cabling-title">Structured Cabling</title>
+  <desc id="structured-cabling-desc">Organized physical pathways that disappear into the architecture.</desc>
+  
+  <g id="structured-cabling" fill="none">
+<line x1="304" y1="316" x2="304" y2="708" stroke="#aca695" stroke-width="34" stroke-linecap="round"/>
+<path d="M 304 356 H 456 C 548 356 548 466 640 466 H 732" fill="none" stroke="#f3eede" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 304 512 H 732" fill="none" stroke="#f3eede" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 304 668 H 456 C 548 668 548 558 640 558 H 732" fill="none" stroke="#57d1ba" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="732" y1="424" x2="732" y2="600" stroke="#aca695" stroke-width="34" stroke-linecap="round"/>
+<circle cx="304" cy="356" r="17" fill="#57d1ba"/>
+<circle cx="304" cy="512" r="17" fill="#57d1ba"/>
+<circle cx="304" cy="668" r="17" fill="#57d1ba"/>
+  </g>
+</svg>

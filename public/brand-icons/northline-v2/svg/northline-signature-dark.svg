@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="northline-signature-title northline-signature-desc">
+  <title id="northline-signature-title">Northline Signature Icon</title>
+  <desc id="northline-signature-desc">A symbolic mark for integrated architecture, intelligence, reliability, and trust.</desc>
+  <rect width="1024" height="1024" fill="#0c0b08"/>
+  <g id="northline-signature" fill="none">
+<path d="M 512 208 L 752 350 V 674 L 512 816 L 272 674 V 350 Z" fill="none" stroke="#f3eede" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 376 430 L 512 512 L 648 430" fill="none" stroke="#57d1ba" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 376 594 L 512 512 L 648 594" fill="none" stroke="#57d1ba" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="326" x2="512" y2="698" stroke="#f3eede" stroke-width="44" stroke-linecap="round"/>
+<line x1="272" y1="512" x2="376" y2="512" stroke="#aca695" stroke-width="44" stroke-linecap="round"/>
+<line x1="648" y1="512" x2="752" y2="512" stroke="#aca695" stroke-width="44" stroke-linecap="round"/>
+<circle cx="512" cy="512" r="52" fill="none" stroke="#57d1ba" stroke-width="38"/>
+<circle cx="512" cy="512" r="17" fill="#0c0b08"/>
+  </g>
+</svg>

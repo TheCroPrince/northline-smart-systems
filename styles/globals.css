@@ -139,17 +139,6 @@ body {
   display: none;
 }
 
-/* Dotted-glow card twinkle (see components/ui/glowing-stars.tsx) */
-@keyframes nl-twinkle {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.9);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

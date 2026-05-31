@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="smart-home-integration-title smart-home-integration-desc">
+  <title id="smart-home-integration-title">Smart Home Integration</title>
+  <desc id="smart-home-integration-desc">Unified architectural system paths for lighting, climate, audio, shades, and control.</desc>
+  
+  <g id="smart-home-integration" fill="none">
+<path d="M 174 174 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<rect x="338" y="338" width="348" height="348" rx="38" ry="38" fill="none" stroke="#f3eede" stroke-width="48"/>
+<line x1="512" y1="338" x2="512" y2="686" stroke="#4a4636" stroke-width="48" stroke-linecap="round" opacity="0.62"/>
+<line x1="338" y1="512" x2="686" y2="512" stroke="#4a4636" stroke-width="48" stroke-linecap="round" opacity="0.62"/>
+<path d="M 256 312 H 338" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 686 312 H 768" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 256 712 H 338" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 686 712 H 768" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 312 256 V 338" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 712 256 V 338" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 312 686 V 768" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 712 686 V 768" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="512" r="64" fill="none" stroke="#5fd6bb" stroke-width="48"/>
+<circle cx="512" cy="512" r="24" fill="#5fd6bb"/>
+<line x1="428" y1="428" x2="456" y2="428" stroke="#aca695" stroke-width="32" stroke-linecap="round"/>
+<line x1="596" y1="428" x2="596" y2="456" stroke="#aca695" stroke-width="32" stroke-linecap="round"/>
+<path d="M 425 609 C 445 590 474 590 494 609" fill="none" stroke="#aca695" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 592 616 H 636" fill="none" stroke="#aca695" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="312" cy="312" r="20" fill="#5fd6bb"/>
+<circle cx="712" cy="312" r="20" fill="#5fd6bb"/>
+<circle cx="312" cy="712" r="20" fill="#5fd6bb"/>
+<circle cx="712" cy="712" r="20" fill="#5fd6bb"/>
+  </g>
+</svg>

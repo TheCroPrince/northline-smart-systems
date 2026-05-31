@@ -54,6 +54,12 @@ export function SmartSystemsAtAGlance() {
       <Reveal variant="fade" delay={120} className="mt-14 sm:mt-18 lg:mt-24">
         <AppleCardsCarousel />
       </Reveal>
+
+      {/* Soft blend into the lighter Capabilities section below */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-b from-transparent to-bg-0"
+      />
     </section>
   );
 }

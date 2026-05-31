@@ -12,7 +12,7 @@ export function TrustStrip() {
   return (
     <section
       aria-labelledby="trust-strip-statement"
-      className="relative border-y border-border-soft bg-bg-0 py-20"
+      className="relative bg-transparent pb-24 pt-16 sm:pt-20"
     >
       <Container>
         <Reveal variant="fade">

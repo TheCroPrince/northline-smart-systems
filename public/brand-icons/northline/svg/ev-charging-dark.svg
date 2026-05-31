@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="ev-charging-title ev-charging-desc">
+  <title id="ev-charging-title">EV Charging</title>
+  <desc id="ev-charging-desc">Elegant charging infrastructure integrated into a property plan.</desc>
+  <rect width="1024" height="1024" fill="#0c0b08"/>
+  <g id="ev-charging" fill="none">
+<path d="M 174 174 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<rect x="342" y="220" width="260" height="430" rx="52" ry="52" fill="none" stroke="#f3eede" stroke-width="48"/>
+<path d="M 422 324 H 522" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 422 414 H 522" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 602 408 H 696 C 746 408 776 440 776 490 V 612 C 776 680 730 724 660 724 H 602" fill="none" stroke="#5fd6bb" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 650 V 790 H 760" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 280 790 H 512" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 682 694 V 790" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.78"/>
+<rect x="594" y="666" width="88" height="116" rx="26" ry="26" fill="none" stroke="#aca695" stroke-width="40"/>
+<path d="M 422 540 L 476 470 H 434 L 494 376" fill="none" stroke="#5fd6bb" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="790" r="22" fill="#5fd6bb"/>
+<circle cx="760" cy="790" r="22" fill="#f3eede"/>
+  </g>
+</svg>

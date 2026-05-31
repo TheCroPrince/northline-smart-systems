@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="smart-home-integration-title smart-home-integration-desc">
+  <title id="smart-home-integration-title">Smart Home Integration</title>
+  <desc id="smart-home-integration-desc">A calm integrated environment for lighting, climate, audio, shades, and unified control.</desc>
+  <rect width="1024" height="1024" fill="#0c0b08"/>
+  <g id="smart-home-integration" fill="none">
+<rect x="306" y="306" width="412" height="412" rx="104" ry="104" fill="none" stroke="#f3eede" stroke-width="44"/>
+<path d="M 512 344 V 450" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 574 V 680" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 344 512 H 450" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 574 512 H 680" fill="none" stroke="#aca695" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="512" r="58" fill="none" stroke="#57d1ba" stroke-width="38"/>
+<circle cx="512" cy="512" r="18" fill="#57d1ba"/>
+<circle cx="512" cy="344" r="18" fill="#f3eede"/>
+<circle cx="680" cy="512" r="18" fill="#f3eede"/>
+  </g>
+</svg>

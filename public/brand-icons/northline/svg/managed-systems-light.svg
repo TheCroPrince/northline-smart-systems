@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="managed-systems-title managed-systems-desc">
+  <title id="managed-systems-title">Managed Systems</title>
+  <desc id="managed-systems-desc">Continuous stewardship and lifecycle support around installed systems.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="managed-systems" fill="none">
+<path d="M 174 174 H 328" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 174 V 328" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 H 696" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 V 328" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 H 328" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 V 696" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 H 696" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 V 696" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<rect x="370" y="338" width="284" height="348" rx="42" ry="42" fill="none" stroke="#15140e" stroke-width="48"/>
+<path d="M 430 438 H 594" fill="none" stroke="#4a4636" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 430 512 H 594" fill="none" stroke="#4a4636" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 430 586 H 536" fill="none" stroke="#d6cdb8" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity="0.78"/>
+<path d="M 512 194 C 688 194 830 336 830 512 C 830 605 790 688 726 746" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 830 C 336 830 194 688 194 512 C 194 419 234 336 298 278" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 726 746 H 642 V 662" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 298 278 H 382 V 362" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="194" r="24" fill="#1f8f7d"/>
+<circle cx="512" cy="830" r="24" fill="#1f8f7d"/>
+<circle cx="654" cy="512" r="22" fill="#1f8f7d"/>
+<circle cx="512" cy="512" r="38" fill="none" stroke="#15140e" stroke-width="34"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="commercial-networking-title commercial-networking-desc">
+  <title id="commercial-networking-title">Commercial Networking</title>
+  <desc id="commercial-networking-desc">Premium commercial connectivity expressed as structured building pathways.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="commercial-networking" fill="none">
+<rect x="286" y="314" width="452" height="396" rx="94" ry="94" fill="none" stroke="#14130f" stroke-width="44"/>
+<line x1="512" y1="314" x2="512" y2="710" stroke="#5b5649" stroke-width="44" stroke-linecap="round"/>
+<path d="M 358 420 H 528 C 620 420 668 466 668 512" fill="none" stroke="#218f7c" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 358 512 H 668" fill="none" stroke="#5b5649" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 358 604 H 528 C 620 604 668 558 668 512" fill="none" stroke="#218f7c" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="668" cy="512" r="18" fill="#218f7c"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="ev-charging-title ev-charging-desc">
+  <title id="ev-charging-title">EV Charging</title>
+  <desc id="ev-charging-desc">Refined charging infrastructure integrated into the property.</desc>
+  
+  <g id="ev-charging" fill="none">
+<rect x="374" y="232" width="254" height="424" rx="72" ry="72" fill="none" stroke="#f3eede" stroke-width="44"/>
+<path d="M 456 352 H 546" fill="none" stroke="#aca695" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 458 520 L 522 426 H 482 L 556 320" fill="none" stroke="#57d1ba" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 628 456 C 734 456 792 520 792 606 C 792 696 722 762 626 762 H 438" fill="none" stroke="#57d1ba" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="386" y1="762" x2="638" y2="762" stroke="#f3eede" stroke-width="44" stroke-linecap="round"/>
+<rect x="594" y="670" width="82" height="104" rx="28" ry="28" fill="none" stroke="#aca695" stroke-width="34"/>
+<circle cx="438" cy="762" r="17" fill="#57d1ba"/>
+  </g>
+</svg>

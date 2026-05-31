@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="surveillance-security-title surveillance-security-desc">
+  <title id="surveillance-security-title">Surveillance and Security</title>
+  <desc id="surveillance-security-desc">Protected perimeter, controlled access, and calm system awareness.</desc>
+  
+  <g id="surveillance-security" fill="none">
+<path d="M 174 174 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 174 V 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 H 328" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 174 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 H 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 850 850 V 696" fill="none" stroke="#4a4636" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<rect x="246" y="248" width="532" height="532" rx="62" ry="62" fill="none" stroke="#f3eede" stroke-width="48"/>
+<path d="M 246 438 H 158 V 586 H 246" fill="none" stroke="#aca695" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 778 438 H 866 V 586 H 778" fill="none" stroke="#aca695" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="248" x2="512" y2="180" stroke="#aca695" stroke-width="48" stroke-linecap="round"/>
+<line x1="512" y1="780" x2="512" y2="844" stroke="#aca695" stroke-width="48" stroke-linecap="round"/>
+<path d="M 322 642 C 404 542 520 477 702 430" fill="none" stroke="#5fd6bb" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 322 382 C 404 482 520 547 702 594" fill="none" stroke="#5fd6bb" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+<line x1="390" y1="512" x2="634" y2="512" stroke="#4a4636" stroke-width="48" stroke-linecap="round" opacity="0.85"/>
+<circle cx="322" cy="382" r="18" fill="#5fd6bb"/>
+<circle cx="322" cy="642" r="18" fill="#5fd6bb"/>
+<circle cx="702" cy="430" r="18" fill="#f3eede"/>
+<circle cx="702" cy="594" r="18" fill="#f3eede"/>
+<path d="M 406 250 V 330" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 618 694 V 778" fill="none" stroke="#f3eede" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

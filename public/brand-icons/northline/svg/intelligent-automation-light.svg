@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="intelligent-automation-title intelligent-automation-desc">
+  <title id="intelligent-automation-title">Intelligent Automation</title>
+  <desc id="intelligent-automation-desc">Flagship orchestration mark showing silent event-driven system communication.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="intelligent-automation" fill="none">
+<path d="M 166 166 H 330" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 166 166 V 330" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 858 166 H 694" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 858 166 V 330" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 166 858 H 330" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 166 858 V 694" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 858 858 H 694" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 858 858 V 694" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<rect x="396" y="396" width="232" height="232" rx="42" ry="42" fill="none" stroke="#15140e" stroke-width="48"/>
+<path d="M 512 236 V 396" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 628 V 788" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 236 512 H 396" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 628 512 H 788" fill="none" stroke="#1f8f7d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 316 316 H 410 C 466 316 512 362 512 396" fill="none" stroke="#15140e" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 708 316 H 614 C 558 316 512 362 512 396" fill="none" stroke="#15140e" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 316 708 H 410 C 466 708 512 662 512 628" fill="none" stroke="#15140e" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 708 708 H 614 C 558 708 512 662 512 628" fill="none" stroke="#15140e" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 396 512 C 444 462 580 462 628 512" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
+<path d="M 396 512 C 444 562 580 562 628 512" fill="none" stroke="#d6cdb8" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
+<circle cx="512" cy="236" r="26" fill="#1f8f7d"/>
+<circle cx="788" cy="512" r="26" fill="#1f8f7d"/>
+<circle cx="512" cy="788" r="26" fill="#1f8f7d"/>
+<circle cx="236" cy="512" r="26" fill="#1f8f7d"/>
+<circle cx="512" cy="512" r="30" fill="#f3eede" stroke="#1f8f7d" stroke-width="22"/>
+  </g>
+</svg>
