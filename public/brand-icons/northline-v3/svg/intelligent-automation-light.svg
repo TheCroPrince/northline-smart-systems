@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="intelligent-automation-title intelligent-automation-desc">
+  <title id="intelligent-automation-title">Intelligent Automation</title>
+  <desc id="intelligent-automation-desc">A signature ambient mark for silent orchestration between conditions, systems, and spaces.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="intelligent-automation" fill="none">
+<path d="M 512 250 C 512 374 610 414 724 392" fill="none" stroke="#1f8d7a" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 774 512 C 650 512 610 610 632 724" fill="none" stroke="#11100c" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 774 C 512 650 414 610 300 632" fill="none" stroke="#1f8d7a" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 250 512 C 374 512 414 414 392 300" fill="none" stroke="#11100c" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="512" r="72" fill="none" stroke="#5c574a" stroke-width="28" opacity="0.72"/>
+<circle cx="512" cy="512" r="18" fill="#f3eede" stroke="#1f8d7a" stroke-width="30"/>
+  </g>
+</svg>

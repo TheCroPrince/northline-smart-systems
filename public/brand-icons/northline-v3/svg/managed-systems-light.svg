@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="managed-systems-title managed-systems-desc">
+  <title id="managed-systems-title">Managed Systems</title>
+  <desc id="managed-systems-desc">Long-term stewardship and lifecycle ownership around the built environment.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="managed-systems" fill="none">
+<path d="M 512 244 C 654 244 774 364 774 512 C 774 624 706 720 610 760" fill="none" stroke="#1f8d7a" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 780 C 370 780 250 660 250 512 C 250 400 318 304 414 264" fill="none" stroke="#1f8d7a" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="398" y="350" width="228" height="324" rx="86" ry="86" fill="none" stroke="#11100c" stroke-width="34"/>
+<line x1="458" y1="450" x2="566" y2="450" stroke="#5c574a" stroke-width="26" stroke-linecap="round" opacity="0.82"/>
+<line x1="458" y1="512" x2="566" y2="512" stroke="#d3cbb7" stroke-width="26" stroke-linecap="round" opacity="0.74"/>
+<circle cx="512" cy="584" r="36" fill="none" stroke="#5c574a" stroke-width="26"/>
+<circle cx="610" cy="760" r="14" fill="#1f8d7a"/>
+  </g>
+</svg>

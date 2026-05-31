@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="managed-systems-title managed-systems-desc">
+  <title id="managed-systems-title">Managed Systems</title>
+  <desc id="managed-systems-desc">Ongoing stewardship and lifecycle care around the installed environment.</desc>
+  
+  <g id="managed-systems" fill="none">
+<path d="M 512 250 C 650 250 768 368 768 512 C 768 630 690 730 584 762" fill="none" stroke="#72dec9" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 512 774 C 374 774 256 656 256 512 C 256 394 334 294 440 262" fill="none" stroke="#72dec9" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 414 388 H 578 C 604 388 624 408 624 434 V 636" fill="none" stroke="#f3eede" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 414 636 H 578 C 604 636 624 616 624 590" fill="none" stroke="#f3eede" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="464" y1="476" x2="564" y2="476" stroke="#958f80" stroke-width="24" stroke-linecap="round" opacity="0.8"/>
+<line x1="464" y1="538" x2="540" y2="538" stroke="#454237" stroke-width="24" stroke-linecap="round" opacity="0.74"/>
+<circle cx="584" cy="762" r="12" fill="#72dec9"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="remote-monitoring-title remote-monitoring-desc">
+  <title id="remote-monitoring-title">Remote Monitoring</title>
+  <desc id="remote-monitoring-desc">Continuous system awareness expressed as calm operational oversight.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="remote-monitoring" fill="none">
+<rect x="306" y="348" width="412" height="328" rx="108" ry="108" fill="none" stroke="#11100c" stroke-width="34"/>
+<path d="M 364 548 C 430 500 484 588 548 536 S 648 496 704 548" fill="none" stroke="#1f8d7a" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="620" cy="448" r="58" fill="none" stroke="#5c574a" stroke-width="28" opacity="0.86"/>
+<path d="M 620 408 V 448 H 662" fill="none" stroke="#1f8d7a" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="364" y1="440" x2="456" y2="440" stroke="#5c574a" stroke-width="26" stroke-linecap="round" opacity="0.78"/>
+  </g>
+</svg>

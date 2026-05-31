@@ -1,0 +1,111 @@
+{
+  "name": "Northline Smart Systems Icon System V3",
+  "canvas": "1024x1024",
+  "strokeWidth": 34,
+  "designNotes": [
+    "More premium and less pictographic than V2",
+    "No outer brackets or decorative framing",
+    "Thinner monoline geometry with larger negative space",
+    "Reduced literal hardware references",
+    "Built for luxury residential integration and premium commercial systems"
+  ],
+  "colors": {
+    "ink": "#0c0b08",
+    "warmCream": "#f3eede",
+    "accentBright": "#69dac4",
+    "accent": "#2f9f8a",
+    "warmGray": "#9f998a"
+  },
+  "icons": [
+    {
+      "slug": "smart-home-integration",
+      "title": "Smart Home Integration",
+      "svg": "svg/smart-home-integration.svg",
+      "svgDark": "svg/smart-home-integration-dark.svg",
+      "svgLight": "svg/smart-home-integration-light.svg",
+      "pngTransparent": "png/smart-home-integration.png",
+      "pngDark": "png/smart-home-integration-dark.png",
+      "pngLight": "png/smart-home-integration-light.png"
+    },
+    {
+      "slug": "surveillance-security",
+      "title": "Surveillance and Security",
+      "svg": "svg/surveillance-security.svg",
+      "svgDark": "svg/surveillance-security-dark.svg",
+      "svgLight": "svg/surveillance-security-light.svg",
+      "pngTransparent": "png/surveillance-security.png",
+      "pngDark": "png/surveillance-security-dark.png",
+      "pngLight": "png/surveillance-security-light.png"
+    },
+    {
+      "slug": "ev-charging",
+      "title": "EV Charging",
+      "svg": "svg/ev-charging.svg",
+      "svgDark": "svg/ev-charging-dark.svg",
+      "svgLight": "svg/ev-charging-light.svg",
+      "pngTransparent": "png/ev-charging.png",
+      "pngDark": "png/ev-charging-dark.png",
+      "pngLight": "png/ev-charging-light.png"
+    },
+    {
+      "slug": "intelligent-automation",
+      "title": "Intelligent Automation",
+      "svg": "svg/intelligent-automation.svg",
+      "svgDark": "svg/intelligent-automation-dark.svg",
+      "svgLight": "svg/intelligent-automation-light.svg",
+      "pngTransparent": "png/intelligent-automation.png",
+      "pngDark": "png/intelligent-automation-dark.png",
+      "pngLight": "png/intelligent-automation-light.png"
+    },
+    {
+      "slug": "commercial-networking",
+      "title": "Commercial Networking",
+      "svg": "svg/commercial-networking.svg",
+      "svgDark": "svg/commercial-networking-dark.svg",
+      "svgLight": "svg/commercial-networking-light.svg",
+      "pngTransparent": "png/commercial-networking.png",
+      "pngDark": "png/commercial-networking-dark.png",
+      "pngLight": "png/commercial-networking-light.png"
+    },
+    {
+      "slug": "remote-monitoring",
+      "title": "Remote Monitoring",
+      "svg": "svg/remote-monitoring.svg",
+      "svgDark": "svg/remote-monitoring-dark.svg",
+      "svgLight": "svg/remote-monitoring-light.svg",
+      "pngTransparent": "png/remote-monitoring.png",
+      "pngDark": "png/remote-monitoring-dark.png",
+      "pngLight": "png/remote-monitoring-light.png"
+    },
+    {
+      "slug": "structured-cabling",
+      "title": "Structured Cabling",
+      "svg": "svg/structured-cabling.svg",
+      "svgDark": "svg/structured-cabling-dark.svg",
+      "svgLight": "svg/structured-cabling-light.svg",
+      "pngTransparent": "png/structured-cabling.png",
+      "pngDark": "png/structured-cabling-dark.png",
+      "pngLight": "png/structured-cabling-light.png"
+    },
+    {
+      "slug": "managed-systems",
+      "title": "Managed Systems",
+      "svg": "svg/managed-systems.svg",
+      "svgDark": "svg/managed-systems-dark.svg",
+      "svgLight": "svg/managed-systems-light.svg",
+      "pngTransparent": "png/managed-systems.png",
+      "pngDark": "png/managed-systems-dark.png",
+      "pngLight": "png/managed-systems-light.png"
+    },
+    {
+      "slug": "northline-signature",
+      "title": "Northline Signature Icon",
+      "svg": "svg/northline-signature.svg",
+      "svgDark": "svg/northline-signature-dark.svg",
+      "svgLight": "svg/northline-signature-light.svg",
+      "pngTransparent": "png/northline-signature.png",
+      "pngDark": "png/northline-signature-dark.png",
+      "pngLight": "png/northline-signature-light.png"
+    }
+  ]
+}

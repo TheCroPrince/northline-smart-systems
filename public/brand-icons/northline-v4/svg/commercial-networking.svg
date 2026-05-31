@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="commercial-networking-title commercial-networking-desc">
+  <title id="commercial-networking-title">Commercial Networking</title>
+  <desc id="commercial-networking-desc">Hidden communication pathways through a premium commercial property.</desc>
+  
+  <g id="commercial-networking" fill="none">
+<path d="M 324 364 H 664 C 696 364 720 388 720 420 V 604 C 720 636 696 660 664 660 H 324" fill="none" stroke="#f3eede" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 352 430 H 496 C 584 430 628 474 672 512" fill="none" stroke="#72dec9" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 352 594 H 496 C 584 594 628 550 672 512" fill="none" stroke="#72dec9" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="364" x2="512" y2="660" stroke="#958f80" stroke-width="30" stroke-linecap="round" opacity="0.66"/>
+<line x1="352" y1="512" x2="672" y2="512" stroke="#958f80" stroke-width="30" stroke-linecap="round" opacity="0.62"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="surveillance-security-title surveillance-security-desc">
+  <title id="surveillance-security-title">Surveillance and Security</title>
+  <desc id="surveillance-security-desc">Quiet perimeter awareness and controlled visibility without aggressive security symbolism.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="surveillance-security" fill="none">
+<rect x="304" y="342" width="416" height="340" rx="118" ry="118" fill="none" stroke="#11100c" stroke-width="34"/>
+<path d="M 352 520 C 444 438 580 438 672 520" fill="none" stroke="#1f8d7a" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 352 520 C 444 602 580 602 672 520" fill="none" stroke="#5c574a" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
+<line x1="512" y1="342" x2="512" y2="276" stroke="#5c574a" stroke-width="28" stroke-linecap="round" opacity="0.72"/>
+<circle cx="672" cy="520" r="14" fill="#11100c"/>
+  </g>
+</svg>

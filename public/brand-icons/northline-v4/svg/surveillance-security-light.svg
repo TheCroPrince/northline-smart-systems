@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="surveillance-security-title surveillance-security-desc">
+  <title id="surveillance-security-title">Surveillance and Security</title>
+  <desc id="surveillance-security-desc">Perimeter awareness, controlled visibility, and quiet protection.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="surveillance-security" fill="none">
+<path d="M 318 512 C 420 408 604 408 706 512" fill="none" stroke="#11100c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 318 512 C 420 616 604 616 706 512" fill="none" stroke="#686252" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+<path d="M 402 512 C 466 458 558 458 622 512" fill="none" stroke="#1c8877" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="322" x2="512" y2="386" stroke="#686252" stroke-width="30" stroke-linecap="round" opacity="0.72"/>
+<circle cx="706" cy="512" r="12" fill="#1c8877"/>
+  </g>
+</svg>

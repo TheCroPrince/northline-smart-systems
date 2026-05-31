@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="smart-home-integration-title smart-home-integration-desc">
+  <title id="smart-home-integration-title">Smart Home Integration</title>
+  <desc id="smart-home-integration-desc">An integrated interior environment resolved into a single quiet control point.</desc>
+  
+  <g id="smart-home-integration" fill="none">
+<path d="M 344 358 C 344 330 366 308 394 308 H 630 C 658 308 680 330 680 358" fill="none" stroke="#f3eede" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 680 666 C 680 694 658 716 630 716 H 394 C 366 716 344 694 344 666" fill="none" stroke="#f3eede" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="344" x2="512" y2="680" stroke="#958f80" stroke-width="30" stroke-linecap="round" opacity="0.7"/>
+<line x1="344" y1="512" x2="680" y2="512" stroke="#958f80" stroke-width="30" stroke-linecap="round" opacity="0.7"/>
+<circle cx="512" cy="512" r="56" fill="none" stroke="#72dec9" stroke-width="28"/>
+<circle cx="512" cy="512" r="10" fill="#f3eede"/>
+  </g>
+</svg>

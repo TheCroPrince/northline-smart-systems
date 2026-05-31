@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="structured-cabling-title structured-cabling-desc">
+  <title id="structured-cabling-title">Structured Cabling</title>
+  <desc id="structured-cabling-desc">Disciplined pathways that are planned, aligned, and concealed.</desc>
+  <rect width="1024" height="1024" fill="#f3eede"/>
+  <g id="structured-cabling" fill="none">
+<line x1="330" y1="344" x2="330" y2="680" stroke="#5c574a" stroke-width="28" stroke-linecap="round" opacity="0.86"/>
+<line x1="694" y1="344" x2="694" y2="680" stroke="#5c574a" stroke-width="28" stroke-linecap="round" opacity="0.86"/>
+<path d="M 330 398 H 454 C 552 398 552 512 650 512 H 694" fill="none" stroke="#11100c" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 330 512 H 694" fill="none" stroke="#11100c" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 330 626 H 454 C 552 626 552 512 650 512" fill="none" stroke="#1f8d7a" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="330" cy="398" r="12" fill="#1f8d7a"/>
+<circle cx="330" cy="512" r="12" fill="#1f8d7a"/>
+<circle cx="330" cy="626" r="12" fill="#1f8d7a"/>
+  </g>
+</svg>

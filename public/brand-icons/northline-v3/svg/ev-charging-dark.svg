@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="ev-charging-title ev-charging-desc">
+  <title id="ev-charging-title">EV Charging</title>
+  <desc id="ev-charging-desc">Charging as an integrated architectural utility, not a device illustration.</desc>
+  <rect width="1024" height="1024" fill="#0c0b08"/>
+  <g id="ev-charging" fill="none">
+<rect x="386" y="254" width="252" height="404" rx="92" ry="92" fill="none" stroke="#f3eede" stroke-width="34"/>
+<path d="M 470 520 L 526 432 H 488 L 554 330" fill="none" stroke="#69dac4" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 638 464 C 726 464 782 530 782 614 C 782 704 714 760 622 760" fill="none" stroke="#69dac4" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="386" y1="760" x2="622" y2="760" stroke="#f3eede" stroke-width="34" stroke-linecap="round"/>
+<line x1="458" y1="360" x2="550" y2="360" stroke="#9f998a" stroke-width="28" stroke-linecap="round" opacity="0.78"/>
+  </g>
+</svg>
