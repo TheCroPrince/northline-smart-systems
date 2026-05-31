@@ -51,6 +51,7 @@ export default async function PortalHome({ searchParams }: PortalHomeProps) {
     <PortalShell
       properties={accessibleProperties}
       currentProperty={currentProperty}
+      activeTab="overview"
     >
       <OverviewTab
         property={currentProperty}

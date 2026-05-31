@@ -1,20 +1,36 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Building2, ChevronDown, Home, Search } from "lucide-react";
+import { Building2, Check, ChevronDown, Home, Search } from "lucide-react";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { cn } from "@/lib/cn";
 import type { Property } from "@/lib/mock/properties";
-import { portalConfig } from "@/lib/mock/portal";
+import { portalConfig, type PortalTab } from "@/lib/mock/portal";
 
 interface PortalShellProps {
   properties: Property[];
   currentProperty: Property;
+  /** The tab this page renders, used to drive nav state and switcher links. */
+  activeTab: PortalTab;
   children: ReactNode;
+}
+
+/** Tabs that have a real route built. Others render as disabled placeholders. */
+const BUILT_TABS: ReadonlySet<PortalTab> = new Set(["overview", "devices"]);
+
+/** Route for a tab. Overview is the portal root; others are nested. */
+function tabPath(tab: PortalTab): string {
+  return tab === "overview" ? "/portal" : `/portal/${tab}`;
+}
+
+/** Preserves the current property when navigating between tabs/switching. */
+function portalHref(tab: PortalTab, propertyId: string): string {
+  return `${tabPath(tab)}?p=${propertyId}`;
 }
 
 export function PortalShell({
   properties,
   currentProperty,
+  activeTab,
   children,
 }: PortalShellProps) {
   return (
@@ -42,6 +58,7 @@ export function PortalShell({
               <PropertySwitcher
                 currentProperty={currentProperty}
                 properties={properties}
+                activeTab={activeTab}
               />
             </div>
 
@@ -85,24 +102,37 @@ export function PortalShell({
               className="flex min-w-0 gap-1 overflow-x-auto pb-1 text-sm scrollbar-hide"
             >
               {portalConfig.tabs.map((tab) => {
-                const isActive = tab.id === "overview";
-                return isActive ? (
-                  <span
+                const isActive = tab.id === activeTab;
+                if (isActive) {
+                  return (
+                    <span
+                      key={tab.id}
+                      aria-current="page"
+                      className="relative flex h-9 items-center rounded-md bg-surface-2 px-3.5 font-medium text-text-hi"
+                    >
+                      {tab.label}
+                      <span
+                        className="absolute inset-x-2 -bottom-1 h-px bg-accent-soft"
+                        aria-hidden
+                      />
+                    </span>
+                  );
+                }
+                return BUILT_TABS.has(tab.id) ? (
+                  <Link
                     key={tab.id}
-                    aria-current="page"
-                    className="relative flex h-9 items-center rounded-md bg-surface-2 px-3.5 font-medium text-text-hi"
+                    href={portalHref(tab.id, currentProperty.id)}
+                    prefetch={false}
+                    className="flex h-9 items-center rounded-md px-3.5 font-medium text-text-mid transition-colors hover:bg-surface hover:text-text-hi"
                   >
                     {tab.label}
-                    <span
-                      className="absolute inset-x-2 -bottom-1 h-px bg-accent-soft"
-                      aria-hidden
-                    />
-                  </span>
+                  </Link>
                 ) : (
                   <span
                     key={tab.id}
                     aria-disabled="true"
-                    className="flex h-9 items-center rounded-md px-3.5 font-medium text-text-low"
+                    title="Coming soon"
+                    className="flex h-9 items-center rounded-md px-3.5 font-medium text-text-low/70"
                   >
                     {tab.label}
                   </span>
@@ -125,9 +155,11 @@ export function PortalShell({
 function PropertySwitcher({
   currentProperty,
   properties,
+  activeTab,
 }: {
   currentProperty: Property;
   properties: Property[];
+  activeTab: PortalTab;
 }) {
   const Icon = currentProperty.kind === "residential" ? Home : Building2;
 
@@ -146,44 +178,52 @@ function PropertySwitcher({
         />
       </summary>
 
-      <div className="absolute left-0 top-12 z-50 w-72 rounded-lg border border-border bg-ink-1 p-1 shadow-[var(--shadow-2)]">
+      <div className="absolute left-0 top-12 z-50 w-72 rounded-lg border border-border bg-ink-1 p-1.5 shadow-[var(--shadow-2)]">
+        <p className="px-2.5 pb-1.5 pt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-text-low">
+          Your properties
+        </p>
         {properties.map((property) => {
           const isActive = property.id === currentProperty.id;
           const PropertyIcon = property.kind === "residential" ? Home : Building2;
           return (
             <a
               key={property.id}
-              href={propertyHref(property.id)}
+              href={portalHref(activeTab, property.id)}
+              aria-current={isActive ? "true" : undefined}
               className={cn(
-                "flex items-start gap-3 rounded-md px-3 py-3 transition-colors",
+                "flex items-center gap-3 rounded-md px-2.5 py-2.5 transition-colors",
                 isActive
                   ? "bg-surface-2 text-text-hi"
                   : "text-text-mid hover:bg-surface hover:text-text-hi",
               )}
             >
-              <PropertyIcon
-                size={17}
-                strokeWidth={1.8}
-                className="mt-0.5 shrink-0"
+              <span
+                className="grid size-8 shrink-0 place-items-center rounded-md border border-border-soft bg-bg-0 text-text-mid"
                 aria-hidden
-              />
-              <span className="min-w-0">
+              >
+                <PropertyIcon size={16} strokeWidth={1.8} />
+              </span>
+              <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium">
                   {property.name}
                 </span>
                 <span className="mt-0.5 block truncate text-xs text-text-low">
-                  {property.city} · {property.systems.cameras} cameras ·{" "}
-                  {property.systems.accessPoints} access points
+                  {property.kind === "residential" ? "Residential" : "Commercial"}{" "}
+                  · {property.city}
                 </span>
               </span>
+              {isActive ? (
+                <Check
+                  size={16}
+                  strokeWidth={2}
+                  className="shrink-0 text-accent-soft"
+                  aria-hidden
+                />
+              ) : null}
             </a>
           );
         })}
       </div>
     </details>
   );
-}
-
-function propertyHref(propertyId: string): string {
-  return `/portal?p=${propertyId}`;
 }

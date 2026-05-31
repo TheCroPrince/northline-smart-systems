@@ -3,9 +3,12 @@ import {
   CheckCircle2,
   KeyRound,
   MessageSquare,
+  Minus,
   RadioTower,
   SearchCheck,
   ShieldCheck,
+  TrendingDown,
+  TrendingUp,
   Wrench,
   Zap,
 } from "lucide-react";
@@ -80,7 +83,7 @@ function OverviewHeader({
       <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.16em] text-text-low">
-            Overview
+            {kindLabel(property.kind)} property
           </p>
           <h1 className="mt-3 font-display text-4xl leading-none tracking-tight text-text-hi sm:text-5xl">
             {property.name}
@@ -95,21 +98,43 @@ function OverviewHeader({
           <MiniStat label="Cameras" value={property.systems.cameras} />
           <MiniStat label="Readers" value={property.systems.accessReaders} />
           <MiniStat label="Sensors" value={property.systems.sensors} />
-          <MiniStat label="EV" value={property.systems.evChargers} />
+          <MiniStat label="Chargers" value={property.systems.evChargers} />
         </div>
       </div>
 
-      <div className="mt-6 h-12 overflow-hidden rounded-md border border-border-soft bg-bg-0 px-2 py-2">
-        <div className="flex h-full items-end gap-1" aria-label="30 day uptime">
-          {metrics.uptimeSparkline.map((value, index) => (
+      <UptimeStrip values={metrics.uptimeSparkline} />
+    </div>
+  );
+}
+
+function UptimeStrip({ values }: { values: number[] }) {
+  const low = Math.min(...values);
+  return (
+    <div className="mt-6 rounded-md border border-border-soft bg-bg-0 px-3 py-3">
+      <div className="mb-2 flex items-baseline justify-between">
+        <p className="text-xs text-text-low">Uptime · last 30 days</p>
+        <p className="font-mono text-xs text-text-low">{low}% low</p>
+      </div>
+      <div
+        className="flex h-9 items-end gap-1"
+        role="img"
+        aria-label={`Daily uptime over the last 30 days, ranging from ${low}% to 100%.`}
+      >
+        {values.map((value, index) => {
+          // Map 95–100% onto a readable 6–32px range so dips are visible.
+          const height = Math.min(32, Math.max(6, ((value - 95) / 5) * 26 + 6));
+          return (
             <span
               key={`${value}-${index}`}
-              className="flex-1 rounded-sm bg-accent/55"
-              style={{ height: `${Math.max(18, value - 58)}px` }}
+              className={cn(
+                "flex-1 rounded-[2px]",
+                value <= 97 ? "bg-gold/45" : "bg-accent/45",
+              )}
+              style={{ height: `${height}px` }}
               aria-hidden
             />
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -135,7 +160,7 @@ function KpiStrip({ cards, values }: { cards: KpiCard[]; values: number[] }) {
     <section aria-labelledby="kpi-heading">
       <div className="mb-3 flex items-center justify-between">
         <h2 id="kpi-heading" className="text-sm font-medium text-text-mid">
-          System record
+          Operational snapshot
         </h2>
         <span className="font-mono text-xs text-text-low">
           {average}% 30-day average
@@ -161,26 +186,12 @@ function KpiCardView({ card }: { card: KpiCard }) {
 
   return (
     <article className="rounded-lg border border-border-soft bg-surface p-4">
-      <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-medium text-text-mid">{card.label}</p>
-        {card.status ? (
-          <span
-            className={cn(
-              "mt-1 size-2 rounded-full",
-              card.status === "healthy" &&
-                "animate-[pulse_1800ms_ease-in-out_infinite] bg-accent-bright",
-              card.status === "degraded" && "bg-signal-warm",
-              card.status === "offline" && "bg-text-low",
-            )}
-            aria-label={card.status}
-          />
-        ) : null}
-      </div>
+      <p className="text-sm font-medium text-text-mid">{card.label}</p>
       <div className="mt-5 flex items-end justify-between gap-3">
         <p className="font-mono text-4xl leading-none tracking-tight text-text-hi">
           {card.value}
         </p>
-        {card.trend ? <TrendPill trend={card.trend} /> : null}
+        {card.trend ? <TrendIndicator trend={card.trend} /> : null}
       </div>
       <div className="mt-4 flex items-center justify-between gap-3">
         {card.sublabel ? (
@@ -196,19 +207,18 @@ function KpiCardView({ card }: { card: KpiCard }) {
   );
 }
 
-function TrendPill({ trend }: { trend: KpiCard["trend"] }) {
-  if (!trend || trend === "flat") {
-    return <span className="font-mono text-xs text-text-low">Flat</span>;
-  }
-
+/**
+ * Direction-only trend mark. Neutral tone — the magnitude lives in the card
+ * sublabel ("-6 vs last week"), so this just shows which way it moved without
+ * the green/red "dashboard" charge.
+ */
+function TrendIndicator({ trend }: { trend: KpiCard["trend"] }) {
+  const Icon = trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
+  const label = trend === "up" ? "Trending up" : trend === "down" ? "Trending down" : "Flat";
   return (
-    <span
-      className={cn(
-        "font-mono text-xs",
-        trend === "up" ? "text-accent-soft" : "text-gold",
-      )}
-    >
-      {trend === "up" ? "Up" : "Down"}
+    <span className="flex items-center gap-1 text-text-low" title={label}>
+      <Icon size={15} strokeWidth={1.8} aria-hidden />
+      <span className="sr-only">{label}</span>
     </span>
   );
 }
@@ -225,7 +235,7 @@ function RecentEvents({ events, now }: { events: FeedEvent[]; now: Date }) {
             Recent events
           </h2>
           <p className="mt-1 text-sm text-text-low">
-            Decisions, access, and maintenance on the record.
+            Classifications, access, and service — on the record.
           </p>
         </div>
         <StatusPill tone="healthy">Live</StatusPill>
@@ -304,8 +314,8 @@ function PropertyRecord({
       <dl className="mt-5 grid grid-cols-2 gap-3">
         <RecordItem label="Last review" value={formatDate(property.lastReviewedOn, "short")} />
         <RecordItem label="Service lead" value={technicianLabel(technician)} />
-        <RecordItem label="Property type" value={kindLabel(property.kind)} />
-        <RecordItem label="Region" value={property.city} />
+        <RecordItem label="Monitoring" value="24/7" />
+        <RecordItem label="Location" value={property.city} />
       </dl>
     </section>
   );
@@ -415,8 +425,8 @@ function AutomationPanel({ automations }: { automations: AutomationRule[] }) {
     <section className="rounded-lg border border-border-soft bg-surface p-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="font-medium text-text-hi">Scheduled automations</h2>
-          <p className="mt-1 text-sm text-text-low">{automations.length} active rules</p>
+          <h2 className="font-medium text-text-hi">Automations</h2>
+          <p className="mt-1 text-sm text-text-low">{automationSummary(automations)}</p>
         </div>
         <Zap size={20} strokeWidth={1.7} className="text-gold" />
       </div>
@@ -501,10 +511,13 @@ function severityTone(severity: FeedEvent["severity"]) {
   return "healthy";
 }
 
+// Attention level for the row, not the system's action — the action word
+// (logged / acknowledged / notified) already lives in the event detail, so the
+// pill conveys "how much should this draw your eye" instead of repeating it.
 function severityLabel(severity: FeedEvent["severity"]) {
-  if (severity === "info") return "Logged";
-  if (severity === "notice") return "Acknowledged";
-  return "Notified";
+  if (severity === "info") return "Routine";
+  if (severity === "notice") return "Notice";
+  return "Alert";
 }
 
 function statusLabel(status: string): string {
@@ -530,4 +543,14 @@ function technicianLabel(technician?: Technician): string {
 
 function kindLabel(kind: Property["kind"]): string {
   return kind === "residential" ? "Residential" : "Commercial";
+}
+
+function automationSummary(automations: AutomationRule[]): string {
+  const running = automations.filter((rule) => rule.status === "active").length;
+  const scheduled = automations.filter((rule) => rule.status === "scheduled").length;
+  const parts: string[] = [];
+  if (running) parts.push(`${running} running`);
+  if (scheduled) parts.push(`${scheduled} scheduled`);
+  if (!parts.length) return `${automations.length} rules`;
+  return parts.join(" · ");
 }
