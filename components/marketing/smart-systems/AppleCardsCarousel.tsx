@@ -147,8 +147,8 @@ export function AppleCardsCarousel() {
 
   return (
     <>
-      {/* Desktop nav */}
-      <div className="mb-6 hidden items-center justify-end gap-3 px-6 sm:px-8 lg:flex lg:px-12">
+      {/* Desktop nav — centered above the track */}
+      <div className="mb-8 hidden items-center justify-center gap-4 lg:flex">
         <NavButton dir="left" onClick={() => scrollByCard(-1)} disabled={atStart} />
         <NavButton dir="right" onClick={() => scrollByCard(1)} disabled={atEnd} />
       </div>

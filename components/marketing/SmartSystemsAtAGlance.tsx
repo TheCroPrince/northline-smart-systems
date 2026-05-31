@@ -27,27 +27,18 @@ export function SmartSystemsAtAGlance() {
       />
 
       <Container className="relative">
-        <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-16">
-          <SectionHeading
-            tone="ink"
-            eyebrow="At a glance"
-            title={
-              <span id="systems-heading">
-                Six disciplines,
-                <span className="italic text-accent-soft"> one system.</span>
-              </span>
-            }
-            subhead="When the network, the security, the automation, and the climate layer are designed by the same team, they behave like one product. The camera knows what the calendar knows. The thermostat knows when the alarm armed."
-            className="max-w-2xl"
-          />
-
-          <Reveal variant="fade" delay={320} className="lg:pb-2">
-            <p className="max-w-md text-base leading-relaxed text-text-on-ink-mid lg:text-right">
-              Each layer is engineered separately and commissioned as one. Open a
-              card to look inside — drag, or use the arrows.
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeading
+          tone="ink"
+          eyebrow="At a glance"
+          title={
+            <span id="systems-heading">
+              Six disciplines,
+              <span className="italic text-accent-soft"> one system.</span>
+            </span>
+          }
+          subhead="When the network, the security, the automation, and the climate layer are designed by the same team, they behave like one product. The camera knows what the calendar knows. The thermostat knows when the alarm armed."
+          className="max-w-2xl"
+        />
       </Container>
 
       {/* Full-bleed carousel */}
