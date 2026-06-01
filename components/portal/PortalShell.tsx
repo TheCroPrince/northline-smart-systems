@@ -18,6 +18,7 @@ interface PortalShellProps {
 const BUILT_TABS: ReadonlySet<PortalTab> = new Set([
   "overview",
   "devices",
+  "projects",
   "support",
 ]);
 
