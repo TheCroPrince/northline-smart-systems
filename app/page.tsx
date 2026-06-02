@@ -1,7 +1,9 @@
 import { ContactCta } from "@/components/marketing/ContactCta";
 import { Hero } from "@/components/marketing/Hero";
+import { PortalPreview } from "@/components/marketing/PortalPreview";
 import { Services } from "@/components/marketing/Services";
 import { SmartSystemsAtAGlance } from "@/components/marketing/SmartSystemsAtAGlance";
+import { Testimonials } from "@/components/marketing/Testimonials";
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
       <Hero />
       <SmartSystemsAtAGlance />
       <Services />
+      <PortalPreview />
+      <Testimonials />
       <ContactCta />
     </main>
   );

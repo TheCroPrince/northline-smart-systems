@@ -1,5 +1,6 @@
 import {
   Activity,
+  ArrowUpRight,
   BatteryCharging,
   ChevronDown,
   Cpu,
@@ -10,6 +11,7 @@ import {
   KeyRound,
   Lock,
   type LucideIcon,
+  MessageSquare,
   Network,
   Phone,
   PlugZap,
@@ -21,6 +23,7 @@ import {
   Wifi,
   Wrench,
 } from "lucide-react";
+import Link from "next/link";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { cn } from "@/lib/cn";
 import { formatDate, resolveRelative } from "@/lib/time";
@@ -42,6 +45,8 @@ interface DevicesTabProps {
   statusCounts: DeviceStatusCounts;
   /** Property-scoped events, used to surface per-device recent activity. */
   events: FeedEvent[];
+  /** deviceId -> href of an active support request about that device. */
+  supportLinks: Record<string, string>;
   now: Date;
 }
 
@@ -50,6 +55,7 @@ export function DevicesTab({
   groups,
   statusCounts,
   events,
+  supportLinks,
   now,
 }: DevicesTabProps) {
   const total = groups.reduce((sum, group) => sum + group.devices.length, 0);
@@ -78,6 +84,7 @@ export function DevicesTab({
             key={group.area}
             group={group}
             eventsByDevice={eventsByDevice}
+            supportLinks={supportLinks}
             now={now}
           />
         ))}
@@ -165,10 +172,12 @@ function StatusSummary({ counts }: { counts: DeviceStatusCounts }) {
 function AreaSection({
   group,
   eventsByDevice,
+  supportLinks,
   now,
 }: {
   group: DeviceAreaGroup;
   eventsByDevice: Map<string, FeedEvent[]>;
+  supportLinks: Record<string, string>;
   now: Date;
 }) {
   const attention = group.devices.filter(
@@ -194,6 +203,7 @@ function AreaSection({
             <DeviceCard
               device={device}
               relatedEvents={eventsByDevice.get(device.id) ?? []}
+              supportHref={supportLinks[device.id]}
               now={now}
             />
           </li>
@@ -206,10 +216,12 @@ function AreaSection({
 function DeviceCard({
   device,
   relatedEvents,
+  supportHref,
   now,
 }: {
   device: Device;
   relatedEvents: FeedEvent[];
+  supportHref?: string;
   now: Date;
 }) {
   const Icon = KIND_ICON[device.kind];
@@ -217,7 +229,10 @@ function DeviceCard({
   const lastSeen = resolveRelative(device.lastSeenSecondsAgo, now);
 
   return (
-    <details className="group rounded-lg border border-border-soft bg-surface transition-colors open:border-border open:bg-surface-2 hover:border-border">
+    <details
+      id={device.id}
+      className="group scroll-mt-36 rounded-lg border border-border-soft bg-surface transition-colors open:border-border open:bg-surface-2 hover:border-border"
+    >
       <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden sm:gap-4">
         <span
           className="grid size-10 shrink-0 place-items-center rounded-md border border-border-soft bg-bg-0 text-text-mid"
@@ -256,7 +271,12 @@ function DeviceCard({
         />
       </summary>
 
-      <DeviceDetail device={device} relatedEvents={relatedEvents} now={now} />
+      <DeviceDetail
+        device={device}
+        relatedEvents={relatedEvents}
+        supportHref={supportHref}
+        now={now}
+      />
     </details>
   );
 }
@@ -264,10 +284,12 @@ function DeviceCard({
 function DeviceDetail({
   device,
   relatedEvents,
+  supportHref,
   now,
 }: {
   device: Device;
   relatedEvents: FeedEvent[];
+  supportHref?: string;
   now: Date;
 }) {
   const lastSeen = resolveRelative(device.lastSeenSecondsAgo, now);
@@ -325,6 +347,18 @@ function DeviceDetail({
             })}
           </ul>
         </div>
+      ) : null}
+
+      {supportHref ? (
+        <Link
+          href={supportHref}
+          prefetch={false}
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-colors hover:text-accent-bright"
+        >
+          <MessageSquare size={14} strokeWidth={1.8} aria-hidden />
+          View the open support request
+          <ArrowUpRight size={13} strokeWidth={2} aria-hidden />
+        </Link>
       ) : null}
     </div>
   );

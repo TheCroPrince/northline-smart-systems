@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   CalendarClock,
   CheckCircle2,
   ChevronDown,
@@ -9,6 +10,7 @@ import {
   Router,
   Video,
 } from "lucide-react";
+import Link from "next/link";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { cn } from "@/lib/cn";
 import { formatDate, formatTime, resolveRelative } from "@/lib/time";
@@ -153,7 +155,10 @@ function RequestCard({
   const updated = resolveRelative(request.updatedAtMinutesAgo * 60, now);
 
   return (
-    <details className="group rounded-lg border border-border-soft bg-surface transition-colors open:border-border open:bg-surface-2 hover:border-border">
+    <details
+      id={request.id}
+      className="group scroll-mt-36 rounded-lg border border-border-soft bg-surface transition-colors open:border-border open:bg-surface-2 hover:border-border"
+    >
       <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden sm:gap-4">
         <span
           className="grid size-10 shrink-0 place-items-center rounded-md border border-border-soft bg-bg-0 text-text-mid"
@@ -225,7 +230,13 @@ function RequestDetail({
           value={technician ? technicianLabel(technician) : "Northline"}
         />
         <Meta label="Category" value={CATEGORY_LABEL[request.category]} />
-        {device ? <Meta label="Related device" value={device.name} /> : null}
+        {device ? (
+          <Meta
+            label="Related device"
+            value={device.name}
+            href={`/portal/devices?p=${request.propertyId}#${device.id}`}
+          />
+        ) : null}
       </dl>
 
       {request.resolutionNote ? (
@@ -399,11 +410,32 @@ function ServiceHistory({ records }: { records: ServiceRecord[] }) {
   );
 }
 
-function Meta({ label, value }: { label: string; value: string }) {
+function Meta({
+  label,
+  value,
+  href,
+}: {
+  label: string;
+  value: string;
+  href?: string;
+}) {
   return (
     <div className="rounded-md border border-border-soft bg-bg-0 p-3">
       <dt className="text-xs text-text-low">{label}</dt>
-      <dd className="mt-1 truncate text-sm font-medium text-text-hi">{value}</dd>
+      <dd className="mt-1 truncate text-sm font-medium text-text-hi">
+        {href ? (
+          <Link
+            href={href}
+            prefetch={false}
+            className="inline-flex items-center gap-1 text-accent-soft transition-colors hover:text-accent-bright"
+          >
+            {value}
+            <ArrowUpRight size={13} strokeWidth={2} aria-hidden />
+          </Link>
+        ) : (
+          value
+        )}
+      </dd>
     </div>
   );
 }

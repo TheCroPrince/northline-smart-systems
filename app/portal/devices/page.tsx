@@ -8,6 +8,7 @@ import {
 } from "@/lib/mock/devices";
 import { getEventsForProperty } from "@/lib/mock/events";
 import { portalConfig } from "@/lib/mock/portal";
+import { getSupportRequestsForProperty } from "@/lib/mock/support";
 import {
   getDefaultProperty,
   getPropertyById,
@@ -45,6 +46,14 @@ export default async function DevicesPage({ searchParams }: DevicesPageProps) {
   );
   const events = getEventsForProperty(currentProperty.id);
 
+  // Map each device to its active support request, so a device can link to it.
+  const supportLinks: Record<string, string> = {};
+  for (const request of getSupportRequestsForProperty(currentProperty.id)) {
+    if (request.status !== "resolved" && request.deviceId) {
+      supportLinks[request.deviceId] = `/portal/support?p=${currentProperty.id}#${request.id}`;
+    }
+  }
+
   return (
     <PortalShell
       properties={accessibleProperties}
@@ -56,6 +65,7 @@ export default async function DevicesPage({ searchParams }: DevicesPageProps) {
         groups={groups}
         statusCounts={statusCounts}
         events={events}
+        supportLinks={supportLinks}
         now={new Date()}
       />
     </PortalShell>

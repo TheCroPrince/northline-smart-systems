@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   CalendarClock,
   CheckCircle2,
   KeyRound,
@@ -12,6 +13,7 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { cn } from "@/lib/cn";
 import { formatDate, formatTime, resolveRelative } from "@/lib/time";
@@ -55,8 +57,13 @@ export function OverviewTab({
 
         <aside className="space-y-4 lg:sticky lg:top-36 lg:self-start">
           <PropertyRecord property={property} technician={technician} />
-          <VisitPanel visit={visit} technician={technician} />
-          <SupportPanel request={supportRequest} technician={technician} now={now} />
+          <VisitPanel visit={visit} technician={technician} propertyId={property.id} />
+          <SupportPanel
+            request={supportRequest}
+            technician={technician}
+            propertyId={property.id}
+            now={now}
+          />
           <AutomationPanel automations={automations} />
         </aside>
       </section>
@@ -318,16 +325,35 @@ function PropertyRecord({
         <RecordItem label="Monitoring" value="24/7" />
         <RecordItem label="Location" value={property.city} />
       </dl>
+
+      <PanelLink href={`/portal/devices?p=${property.id}`}>
+        View all devices
+      </PanelLink>
     </section>
+  );
+}
+
+function PanelLink({ href, children }: { href: string; children: string }) {
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent-soft transition-colors hover:text-accent-bright"
+    >
+      {children}
+      <ArrowUpRight size={13} strokeWidth={2} aria-hidden />
+    </Link>
   );
 }
 
 function VisitPanel({
   visit,
   technician,
+  propertyId,
 }: {
   visit?: Visit;
   technician?: Technician;
+  propertyId: string;
 }) {
   return (
     <section className="rounded-lg border border-border-soft bg-surface p-4">
@@ -364,6 +390,10 @@ function VisitPanel({
               </li>
             ))}
           </ul>
+
+          <PanelLink href={`/portal/support?p=${propertyId}`}>
+            View in Support
+          </PanelLink>
         </>
       ) : null}
     </section>
@@ -373,10 +403,12 @@ function VisitPanel({
 function SupportPanel({
   request,
   technician,
+  propertyId,
   now,
 }: {
   request?: SupportRequest;
   technician?: Technician;
+  propertyId: string;
   now: Date;
 }) {
   const latestMessage = request?.messages.at(-1);
@@ -421,6 +453,12 @@ function SupportPanel({
           No open requests. Everything is running normally.
         </p>
       )}
+
+      <PanelLink
+        href={`/portal/support?p=${propertyId}${request ? `#${request.id}` : ""}`}
+      >
+        {request ? "Open in Support" : "View Support"}
+      </PanelLink>
     </section>
   );
 }

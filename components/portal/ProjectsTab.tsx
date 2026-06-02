@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   CalendarClock,
   CheckCircle2,
   Circle,
@@ -6,6 +7,7 @@ import {
   CircleDot,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { cn } from "@/lib/cn";
 import { formatDate } from "@/lib/time";
@@ -153,9 +155,19 @@ function ActiveProject({ project }: { project: Project }) {
         </div>
 
         {project.detail ? (
-          <p className="max-w-3xl text-sm leading-7 text-text-mid sm:text-base">
-            {project.detail}
-          </p>
+          <div className="max-w-3xl">
+            <p className="text-sm leading-7 text-text-mid sm:text-base">
+              {project.detail}
+            </p>
+            <Link
+              href={`/portal/devices?p=${project.propertyId}`}
+              prefetch={false}
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent-soft transition-colors hover:text-accent-bright"
+            >
+              View installed devices
+              <ArrowUpRight size={13} strokeWidth={2} aria-hidden />
+            </Link>
+          </div>
         ) : null}
 
         {project.photoStrip && project.photoStrip.length > 0 ? (

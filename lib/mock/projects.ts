@@ -140,8 +140,8 @@ export const projects: Project[] = [
       },
     ],
     heroImage: {
-      src: "/Images/carousel/access.jpg",
-      alt: "Access-control hardware at a residential entry",
+      src: "/Images/services/surveillance-security.jpg",
+      alt: "Northline technician installing the exterior camera and access hardware",
       placeholderFor:
         "Wide photo of the modernized garage entry with the new controller and reader installed.",
     },
@@ -152,13 +152,13 @@ export const projects: Project[] = [
         placeholderFor: "Close-up of the installed side-door access reader.",
       },
       {
-        src: "/Images/carousel/monitoring.jpg",
-        alt: "Mounted security camera",
-        placeholderFor: "The garage camera mounted, showing its field of view.",
+        src: "/Images/services/commercial-networking.jpg",
+        alt: "New access controller and switching wired in",
+        placeholderFor: "The new garage access controller wired into the network.",
       },
       {
-        src: "/Images/network2.jpg",
-        alt: "Structured cabling run",
+        src: "/Images/services/structured-cabling.jpg",
+        alt: "Structured cabling run to the network closet",
         placeholderFor: "Cabling run from the controller to the network closet.",
       },
     ],
@@ -179,8 +179,8 @@ export const projects: Project[] = [
     outcome:
       "Security, climate, EV, and network commissioned across both buildings with fiber backhaul between them.",
     thumbnail: {
-      src: "/Images/smart-home-integration.jpg",
-      alt: "Smart home systems",
+      src: "/Images/services/smart-home-integration.jpg",
+      alt: "Smart-home control and integration",
       placeholderFor: "Hero photo from the Birch House handover walkthrough.",
     },
   },
@@ -213,8 +213,8 @@ export const projects: Project[] = [
     outcome:
       "Sensors added in the kitchen, mechanical room, and utility, wired to auto-close the smart shutoff valve on a confirmed leak.",
     thumbnail: {
-      src: "/Images/network1.jpg",
-      alt: "Mechanical systems",
+      src: "/Images/services/home-control-panel-repair.jpg",
+      alt: "Mechanical-room controller and automatic shutoff valve",
       placeholderFor: "Mechanical-room sensors and the shutoff valve install.",
     },
   },
@@ -230,8 +230,8 @@ export const projects: Project[] = [
     outcome:
       "Coverage rebuilt for both buildings with isolated segments for cameras, control, and guests.",
     thumbnail: {
-      src: "/Images/network2.jpg",
-      alt: "Network equipment",
+      src: "/Images/services/commercial-networking.jpg",
+      alt: "Refreshed network equipment after the upgrade",
       placeholderFor: "The refreshed network closet after the upgrade.",
     },
   },
@@ -287,8 +287,8 @@ export const projects: Project[] = [
       },
     ],
     heroImage: {
-      src: "/Images/outdoor-security-cams.jpg",
-      alt: "Exterior surveillance cameras",
+      src: "/Images/services/remote-monitoring.jpg",
+      alt: "Loading-dock camera coverage on the Northline monitoring wall",
       placeholderFor:
         "Wide photo of the loading dock with the new readers and cameras in place.",
     },
@@ -326,8 +326,8 @@ export const projects: Project[] = [
     outcome:
       "Cameras, access, network, and EV commissioned building-wide before the first tenants moved in.",
     thumbnail: {
-      src: "/Images/security-headquarters.jpg",
-      alt: "Commercial building systems",
+      src: "/Images/services/surveillance-security.jpg",
+      alt: "Building-wide cameras and access commissioned",
       placeholderFor: "Hero photo from the Linden Commercial commissioning.",
     },
   },
@@ -360,8 +360,8 @@ export const projects: Project[] = [
     outcome:
       "Lobby and stair readers upgraded with auto-expiring credentials and tenant-hour schedules.",
     thumbnail: {
-      src: "/Images/carousel/access.jpg",
-      alt: "Access reader",
+      src: "/Images/carousel/access-inside.jpg",
+      alt: "Modernized lobby access reader",
       placeholderFor: "The modernized lobby reader.",
     },
   },
@@ -377,8 +377,8 @@ export const projects: Project[] = [
     outcome:
       "48-port core, distribution switching, and roof access points replaced over a maintenance window with no tenant downtime.",
     thumbnail: {
-      src: "/Images/network1.jpg",
-      alt: "Network switching",
+      src: "/Images/services/structured-cabling.jpg",
+      alt: "Refreshed core switching and patch panel",
       placeholderFor: "The refreshed server-room core switching.",
     },
   },
