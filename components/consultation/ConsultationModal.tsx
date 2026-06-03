@@ -407,6 +407,11 @@ export function ConsultationModal() {
                       {mode === "engineering" ? "Send to engineering" : "Request consultation"}
                       <ArrowRight size={16} strokeWidth={2} aria-hidden />
                     </button>
+
+                    <p className="text-center text-xs leading-relaxed text-text-low">
+                      We use your details only to plan the consultation — no spam,
+                      no sales calls, no obligation.
+                    </p>
                   </form>
                 </div>
               )}

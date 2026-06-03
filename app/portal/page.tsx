@@ -13,6 +13,7 @@ import {
 import { portalConfig } from "@/lib/mock/portal";
 import { getPrimarySupportRequestForProperty } from "@/lib/mock/support";
 import { getNextVisitForProperty } from "@/lib/mock/visits";
+import { formatDate } from "@/lib/time";
 
 export const dynamic = "force-dynamic";
 
@@ -38,12 +39,33 @@ export default async function PortalHome({ searchParams }: PortalHomeProps) {
   const accessibleProperties = properties.filter((property) =>
     portalConfig.user.accessiblePropertyIds.includes(property.id),
   );
-  const metrics = getMetricsForProperty(currentProperty.id);
-  const events = getRecentEventsForProperty(currentProperty.id, 12);
-  const visit = getNextVisitForProperty(currentProperty.id);
+  const now = new Date();
+  const visit = getNextVisitForProperty(currentProperty.id, now);
+
+  // Keep the "Next visit" KPI in sync with the (now-relative) scheduled visit,
+  // so the headline date never drifts into the past.
+  const baseMetrics = getMetricsForProperty(currentProperty.id);
+  const metrics = visit
+    ? {
+        ...baseMetrics,
+        cards: baseMetrics.cards.map((card) =>
+          card.id === "kpi-next-visit"
+            ? { ...card, value: formatDate(visit.scheduledFor, "short"), sublabel: visit.title }
+            : card,
+        ),
+      }
+    : baseMetrics;
+
+  // The "scheduled maintenance" event mirrors the same visit — align its date too.
+  const events = getRecentEventsForProperty(currentProperty.id, 12).map((event) =>
+    visit && event.type === "maintenance" && event.scheduledFor
+      ? { ...event, scheduledFor: visit.scheduledFor }
+      : event,
+  );
+
   const supportRequest = getPrimarySupportRequestForProperty(currentProperty.id);
   const technician = getTechnicianById(currentProperty.assignedTechnicianId);
-  const automations = getAutomationRulesForProperty(currentProperty.id);
+  const automations = getAutomationRulesForProperty(currentProperty.id, now);
 
   return (
     <PortalShell
@@ -59,7 +81,7 @@ export default async function PortalHome({ searchParams }: PortalHomeProps) {
         supportRequest={supportRequest}
         technician={technician}
         automations={automations}
-        now={new Date()}
+        now={now}
       />
     </PortalShell>
   );

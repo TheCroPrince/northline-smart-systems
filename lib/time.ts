@@ -69,6 +69,34 @@ export function formatTime(iso: string): string {
   });
 }
 
+/**
+ * Local calendar date `daysAhead` from `now`, as a "YYYY-MM-DD" string. Keeps
+ * scheduled items (visits, maintenance) in the near future so the demo never
+ * shows a "next visit" in the past as the reference date drifts.
+ */
+export function upcomingDate(now: Date, daysAhead: number): string {
+  const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysAhead);
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${month}-${day}`;
+}
+
+/**
+ * Local datetime `daysAhead` from `now` at `hour:minute`, as a tz-less
+ * "YYYY-MM-DDTHH:mm:00" string that `formatTime` renders back at the same
+ * wall-clock time. Used for recurring automation next-run times.
+ */
+export function upcomingDateTime(
+  now: Date,
+  daysAhead: number,
+  hour: number,
+  minute: number,
+): string {
+  const hh = String(hour).padStart(2, "0");
+  const mm = String(minute).padStart(2, "0");
+  return `${upcomingDate(now, daysAhead)}T${hh}:${mm}:00`;
+}
+
 // ---------------------------------------------------------------------------
 // Internal
 // ---------------------------------------------------------------------------

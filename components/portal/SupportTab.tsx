@@ -216,7 +216,7 @@ function RequestDetail({
   const technician = getTechnicianById(request.assignedTechnicianId);
   const device = request.deviceId ? getDeviceById(request.deviceId) : undefined;
   const visit = request.scheduledVisitId
-    ? getVisitById(request.scheduledVisitId)
+    ? getVisitById(request.scheduledVisitId, now)
     : undefined;
 
   return (

@@ -40,7 +40,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "justina-little",
     name: "Justina Little",
-    role: "Facilities manager",
+    role: "Facilities manager · Seattle",
     persona: "facilities",
     quote:
       "One view of what's healthy and what needs a tech, across the whole building. The weekly report replaced a vendor we used to pay for.",
@@ -50,7 +50,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "beko-covic",
     name: "Beko Covic",
-    role: "Property manager",
+    role: "Property manager · Vancouver",
     persona: "property_manager",
     quote:
       "The proposal came as a real document: drawings, model numbers, and a fixed total. We knew exactly what we were buying before we signed.",
