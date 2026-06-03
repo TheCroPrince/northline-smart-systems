@@ -61,6 +61,9 @@ export function Hero() {
               <a href="#systems" className="transition-colors hover:text-text-hi">
                 Systems
               </a>
+              <a href="#operations" className="transition-colors hover:text-text-hi">
+                Operations
+              </a>
               <a href="/portal" className="transition-colors hover:text-text-hi">
                 Portal
               </a>
