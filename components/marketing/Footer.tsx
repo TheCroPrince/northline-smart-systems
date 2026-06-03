@@ -4,6 +4,8 @@ import { Container } from "@/components/ui/Container";
 interface FooterLink {
   label: string;
   href: string;
+  /** If set, opens the consultation modal (via document delegation). */
+  book?: string;
 }
 
 interface FooterColumn {
@@ -36,8 +38,8 @@ const columns: readonly FooterColumn[] = [
     heading: "Company",
     links: [
       { label: "Common questions", href: "#faq" },
-      { label: "Book a consultation", href: "#contact" },
-      { label: "Talk to engineering", href: "#contact" },
+      { label: "Book a consultation", href: "#contact", book: "consultation" },
+      { label: "Talk to engineering", href: "#contact", book: "engineering" },
     ],
   },
 ];
@@ -46,12 +48,13 @@ function FooterAnchor({ link }: { link: FooterLink }) {
   const className =
     "text-sm text-text-mid transition-colors hover:text-text-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded";
   // Internal routes use next/link; in-page anchors use a plain anchor.
+  // `book` links keep their #contact href as a no-JS fallback and open the modal.
   return link.href.startsWith("/") ? (
     <Link href={link.href} className={className}>
       {link.label}
     </Link>
   ) : (
-    <a href={link.href} className={className}>
+    <a href={link.href} data-book={link.book} className={className}>
       {link.label}
     </a>
   );

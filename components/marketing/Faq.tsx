@@ -20,7 +20,7 @@ const faqs: readonly FaqItem[] = [
   },
   {
     q: "What does ongoing monitoring cost?",
-    a: "It depends on the size of the system and what you want covered. Health monitoring is included with every install for the first year. After that, residential plans typically start around $89 per month; commercial plans are scoped to the property.",
+    a: "Health monitoring is included with every install for the first year. After that, monitoring is scoped per property — priced to how many systems you run and how much you want actively watched, set as a fixed figure in your proposal. No per-incident charges, no surprises mid-term.",
   },
   {
     q: "Who has access to my system's data?",

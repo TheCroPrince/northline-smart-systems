@@ -67,7 +67,12 @@ export function Hero() {
               <a href="/portal" className="transition-colors hover:text-text-hi">
                 Portal
               </a>
-              <Button variant="secondary" className="h-10 px-5 text-xs" href="#contact">
+              <Button
+                variant="secondary"
+                className="h-10 px-5 text-xs"
+                href="#contact"
+                data-book="consultation"
+              >
                 Book a consultation
               </Button>
             </nav>
@@ -99,7 +104,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex w-full max-w-sm flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:max-w-none sm:flex-row sm:items-center">
-            <Button variant="primary">
+            <Button variant="primary" data-book="consultation">
               Book a consultation
               <ArrowRight size={16} strokeWidth={2} aria-hidden />
             </Button>

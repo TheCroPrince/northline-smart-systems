@@ -1,3 +1,4 @@
+import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 import { ContactCta } from "@/components/marketing/ContactCta";
 import { Faq } from "@/components/marketing/Faq";
 import { Footer } from "@/components/marketing/Footer";
@@ -24,6 +25,7 @@ export default function Home() {
       <Faq />
       <ContactCta />
       <Footer />
+      <ConsultationModal />
     </main>
   );
 }

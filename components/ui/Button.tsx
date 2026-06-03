@@ -14,6 +14,8 @@ interface ButtonProps {
   disabled?: boolean;
   "aria-label"?: string;
   "data-cta"?: string;
+  /** Opens the consultation modal via document-level delegation. */
+  "data-book"?: string;
 }
 
 const baseStyles =

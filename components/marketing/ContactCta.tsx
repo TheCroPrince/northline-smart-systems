@@ -63,7 +63,7 @@ export function ContactCta() {
             </p>
 
             <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <Button variant="primary">
+              <Button variant="primary" data-book="consultation">
                 Book a consultation
                 <ArrowRight size={16} strokeWidth={2} aria-hidden />
               </Button>
