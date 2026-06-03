@@ -77,8 +77,8 @@ export function Footer() {
           <div className="max-w-xs">
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl text-text-hi">Northline</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-low">
-                Smart Systems
+              <span className="font-display text-2xl italic text-accent-bright">
+                smart systems
               </span>
             </div>
             <p className="mt-4 font-display text-lg italic text-text-mid">

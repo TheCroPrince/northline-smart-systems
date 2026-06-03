@@ -25,13 +25,15 @@ export function ContactCta() {
       aria-labelledby="contact-heading"
       className="relative overflow-hidden bg-bg-0 pt-24 sm:pt-32"
     >
-      {/* Soft teal glow — an echo of the hero lamp, tying the ends together */}
+      {/* Soft teal glow — an echo of the hero lamp, tying the ends together.
+          Anchored above the section top so overflow-hidden clips it into a clean
+          top-down wash that blooms behind the card, not a floating oval. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[840px] max-w-[130vw] -translate-x-1/2 rounded-full opacity-70"
+        className="pointer-events-none absolute left-1/2 top-[-120px] h-[340px] w-[680px] max-w-[115vw] -translate-x-1/2 opacity-50 blur-2xl"
         style={{
           background:
-            "radial-gradient(ellipse at center top, color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%)",
+            "radial-gradient(ellipse at center top, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%)",
         }}
       />
 

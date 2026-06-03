@@ -54,7 +54,7 @@ export function StickyNav() {
           animate={{ opacity: 1, y: 0 }}
           exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: "-100%" }}
           transition={{ duration: duration.fast / 1000, ease: ease.out }}
-          className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-bg-0/85 backdrop-blur-md"
+          className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-bg-0/85 shadow-[0_8px_30px_rgba(0,0,0,0.28)] backdrop-blur-md"
         >
           <Container className="flex h-14 items-center justify-between gap-4">
             <a
@@ -65,8 +65,8 @@ export function StickyNav() {
               <span className="font-display text-lg tracking-tight text-text-hi">
                 Northline
               </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-text-low sm:inline">
-                Smart Systems
+              <span className="hidden font-display text-lg italic text-accent-bright sm:inline">
+                smart systems
               </span>
             </a>
 

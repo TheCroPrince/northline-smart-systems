@@ -110,6 +110,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Anchor jumps clear the sticky nav and breathe a little. */
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   font-size: 17px;
   line-height: 1.55;

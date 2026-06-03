@@ -42,7 +42,7 @@ export function SectionHeading({
       <Reveal variant="rise" delay={eyebrow ? 120 : 0}>
         <h2
           className={cn(
-            "font-display text-[2.5rem] leading-[1.04] tracking-[-0.015em] sm:text-5xl lg:text-[3.5rem]",
+            "text-balance font-display text-[2.5rem] leading-[1.04] tracking-[-0.015em] sm:text-5xl lg:text-[3.5rem]",
             titleColor,
           )}
         >
@@ -56,7 +56,7 @@ export function SectionHeading({
           delay={eyebrow ? 280 : 160}
           className={cn("mt-6 max-w-2xl", align === "center" && "mx-auto")}
         >
-          <p className={cn("text-base leading-relaxed sm:text-lg", subheadColor)}>
+          <p className={cn("text-pretty text-base leading-relaxed sm:text-lg", subheadColor)}>
             {subhead}
           </p>
         </Reveal>
