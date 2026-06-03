@@ -157,14 +157,15 @@ export function PortalShowcase() {
             <span className="size-2.5 rounded-full bg-border-strong" aria-hidden />
             <span className="ml-2 font-mono text-[11px] text-text-low">{active.path}</span>
           </div>
-          <div className="relative aspect-[16/10] w-full bg-ink-1">
+          <div className="relative aspect-[329/125] w-full bg-ink-1">
             {prefersReducedMotion ? (
               <Image
                 key={active.id}
                 src={active.image}
                 alt={active.alt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 620px"
+                sizes="(max-width: 1024px) 100vw, 680px"
+                quality={92}
                 className="object-cover object-top"
                 priority={active.id === views[0].id}
               />
@@ -191,7 +192,8 @@ export function PortalShowcase() {
                           src={view.image}
                           alt={view.alt}
                           fill
-                          sizes="(max-width: 1024px) 100vw, 620px"
+                          sizes="(max-width: 1024px) 100vw, 680px"
+                          quality={92}
                           className="object-cover object-top"
                           priority={view.id === views[0].id}
                         />
