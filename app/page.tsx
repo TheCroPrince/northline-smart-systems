@@ -9,11 +9,13 @@ import { Process } from "@/components/marketing/Process";
 import { ProjectGallery } from "@/components/marketing/ProjectGallery";
 import { Services } from "@/components/marketing/Services";
 import { SmartSystemsAtAGlance } from "@/components/marketing/SmartSystemsAtAGlance";
+import { StickyNav } from "@/components/marketing/StickyNav";
 import { Testimonials } from "@/components/marketing/Testimonials";
 
 export default function Home() {
   return (
     <main id="main" className="min-h-screen">
+      <StickyNav />
       <Hero />
       <SmartSystemsAtAGlance />
       <Services />

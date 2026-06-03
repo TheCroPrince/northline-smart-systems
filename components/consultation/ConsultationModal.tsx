@@ -84,12 +84,15 @@ export function ConsultationModal() {
 
   const close = useCallback(() => setOpen(false), []);
 
-  // Open on any [data-book] click.
+  // Open on any [data-book] click. Capture phase + stopPropagation so it runs
+  // before React's <Link> onClick — otherwise a trigger that is also a link
+  // (href="#contact" fallback) would navigate as well as open the modal.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const trigger = (e.target as Element | null)?.closest<HTMLElement>("[data-book]");
       if (!trigger) return;
       e.preventDefault();
+      e.stopPropagation();
       triggerRef.current = trigger;
       const m: Mode = trigger.getAttribute("data-book") === "engineering" ? "engineering" : "consultation";
       setMode(m);
@@ -98,8 +101,8 @@ export function ConsultationModal() {
       setForm({ ...EMPTY, propertyType: m === "engineering" ? "Commercial" : "Residential" });
       setOpen(true);
     };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
   }, []);
 
   // Escape, focus trap, scroll lock, focus restore.
