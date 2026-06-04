@@ -25,7 +25,7 @@ interface Project {
  */
 const projects: readonly Project[] = [
   {
-    image: "/Images/projects/access-reader.jpg",
+    image: "/images/projects/access-reader.jpg",
     alt: "A hand presenting an access card to a wall-mounted reader with keypad and fingerprint sensor",
     title: "Garage access modernization",
     blurb:
@@ -34,7 +34,7 @@ const projects: readonly Project[] = [
     tags: ["Access", "Controller", "Audit log"],
   },
   {
-    image: "/Images/services/surveillance-security.jpg",
+    image: "/images/services/surveillance-security.jpg",
     alt: "A technician mounting an exterior surveillance camera to a building wall",
     title: "Surveillance coverage upgrade",
     blurb:
@@ -43,7 +43,7 @@ const projects: readonly Project[] = [
     tags: ["Cameras", "Coverage", "Monitored"],
   },
   {
-    image: "/Images/projects/Wiring-rack.jpg",
+    image: "/images/projects/Wiring-rack.jpg",
     alt: "A network cabinet with a managed switch and patch panel, copper and fiber neatly dressed",
     title: "Network cabinet cleanup",
     blurb:
@@ -52,7 +52,7 @@ const projects: readonly Project[] = [
     tags: ["Switching", "Structured cabling", "Fiber"],
   },
   {
-    image: "/Images/projects/home-panel-technician.jpg",
+    image: "/images/projects/home-panel-technician.jpg",
     alt: "A gloved technician configuring a wall-mounted smart control and climate panel",
     title: "Smart home integration",
     blurb:
@@ -61,7 +61,7 @@ const projects: readonly Project[] = [
     tags: ["Automation", "Control panel", "Commissioned"],
   },
   {
-    image: "/Images/projects/ev-technician.jpg",
+    image: "/images/projects/ev-technician.jpg",
     alt: "A technician installing a wall-mounted EV charger beside an open electrical sub-panel",
     title: "EV charger readiness",
     blurb:
@@ -70,7 +70,7 @@ const projects: readonly Project[] = [
     tags: ["EV", "Level 2", "Load-aware"],
   },
   {
-    image: "/Images/projects/security-team.jpg",
+    image: "/images/projects/security-team.jpg",
     alt: "An operations team reviewing system-health dashboards across multiple monitors",
     title: "Remote monitoring setup",
     blurb:

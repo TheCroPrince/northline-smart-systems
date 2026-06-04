@@ -32,7 +32,7 @@ const views: readonly PortalView[] = [
     path: "northline.app / portal",
     href: "/portal",
     blurb: "System health, the latest events, and your next scheduled visit, at a glance.",
-    image: "/Images/portal/portal-preview.png",
+    image: "/images/portal/portal-preview.png",
     alt: "The portal Overview, showing system health, recent events, and the next scheduled visit",
   },
   {
@@ -41,7 +41,7 @@ const views: readonly PortalView[] = [
     path: "northline.app / portal / projects",
     href: "/portal/projects",
     blurb: "Active installs and upgrades, with milestones, photos, and completion dates.",
-    image: "/Images/portal/projects-preview.png",
+    image: "/images/portal/projects-preview.png",
     alt: "The portal Projects area, showing active installs with milestones and photos",
   },
   {
@@ -50,7 +50,7 @@ const views: readonly PortalView[] = [
     path: "northline.app / portal / devices",
     href: "/portal/devices",
     blurb: "Every device, its firmware, and when it was last seen on your network.",
-    image: "/Images/portal/devices-preview.png",
+    image: "/images/portal/devices-preview.png",
     alt: "The portal Devices area, listing every device with firmware and last-seen status",
   },
   {
@@ -59,7 +59,7 @@ const views: readonly PortalView[] = [
     path: "northline.app / portal / support",
     href: "/portal/support",
     blurb: "A direct thread with your lead technician, with the full service history.",
-    image: "/Images/portal/support-preview.png",
+    image: "/images/portal/support-preview.png",
     alt: "The portal Support area, showing a message thread with the lead technician",
   },
 ] as const;

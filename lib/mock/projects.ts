@@ -140,24 +140,24 @@ export const projects: Project[] = [
       },
     ],
     heroImage: {
-      src: "/Images/services/surveillance-security.jpg",
+      src: "/images/services/surveillance-security.jpg",
       alt: "Northline technician installing the exterior camera and access hardware",
       placeholderFor:
         "Wide photo of the modernized garage entry with the new controller and reader installed.",
     },
     photoStrip: [
       {
-        src: "/Images/carousel/access-inside.jpg",
+        src: "/images/carousel/access-inside.jpg",
         alt: "Newly installed access reader",
         placeholderFor: "Close-up of the installed side-door access reader.",
       },
       {
-        src: "/Images/services/commercial-networking.jpg",
+        src: "/images/services/commercial-networking.jpg",
         alt: "New access controller and switching wired in",
         placeholderFor: "The new garage access controller wired into the network.",
       },
       {
-        src: "/Images/services/structured-cabling.jpg",
+        src: "/images/services/structured-cabling.jpg",
         alt: "Structured cabling run to the network closet",
         placeholderFor: "Cabling run from the controller to the network closet.",
       },
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     outcome:
       "Security, climate, EV, and network commissioned across both buildings with fiber backhaul between them.",
     thumbnail: {
-      src: "/Images/services/smart-home-integration.jpg",
+      src: "/images/services/smart-home-integration.jpg",
       alt: "Smart-home control and integration",
       placeholderFor: "Hero photo from the Birch House handover walkthrough.",
     },
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     outcome:
       "Two Level 2 chargers installed with a load controller that staggers draw below the panel limit.",
     thumbnail: {
-      src: "/Images/carousel/ev.jpg",
+      src: "/images/carousel/ev.jpg",
       alt: "EV charger",
       placeholderFor: "The installed driveway and garage chargers.",
     },
@@ -213,7 +213,7 @@ export const projects: Project[] = [
     outcome:
       "Sensors added in the kitchen, mechanical room, and utility, wired to auto-close the smart shutoff valve on a confirmed leak.",
     thumbnail: {
-      src: "/Images/services/home-control-panel-repair.jpg",
+      src: "/images/services/home-control-panel-repair.jpg",
       alt: "Mechanical-room controller and automatic shutoff valve",
       placeholderFor: "Mechanical-room sensors and the shutoff valve install.",
     },
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     outcome:
       "Coverage rebuilt for both buildings with isolated segments for cameras, control, and guests.",
     thumbnail: {
-      src: "/Images/services/commercial-networking.jpg",
+      src: "/images/services/commercial-networking.jpg",
       alt: "Refreshed network equipment after the upgrade",
       placeholderFor: "The refreshed network closet after the upgrade.",
     },
@@ -287,24 +287,24 @@ export const projects: Project[] = [
       },
     ],
     heroImage: {
-      src: "/Images/services/remote-monitoring.jpg",
+      src: "/images/services/remote-monitoring.jpg",
       alt: "Loading-dock camera coverage on the Northline monitoring wall",
       placeholderFor:
         "Wide photo of the loading dock with the new readers and cameras in place.",
     },
     photoStrip: [
       {
-        src: "/Images/carousel/access-inside.jpg",
+        src: "/images/carousel/access-inside.jpg",
         alt: "Access reader staged for installation",
         placeholderFor: "Reader staged at the dock prior to mounting.",
       },
       {
-        src: "/Images/carousel/network.jpg",
+        src: "/images/carousel/network.jpg",
         alt: "Network cabinet",
         placeholderFor: "The dock network cabinet feeding the new controller.",
       },
       {
-        src: "/Images/carousel/monitoring-inside.jpg",
+        src: "/images/carousel/monitoring-inside.jpg",
         alt: "Camera coverage review",
         placeholderFor: "Camera coverage review for the dock approach.",
       },
@@ -326,7 +326,7 @@ export const projects: Project[] = [
     outcome:
       "Cameras, access, network, and EV commissioned building-wide before the first tenants moved in.",
     thumbnail: {
-      src: "/Images/services/surveillance-security.jpg",
+      src: "/images/services/surveillance-security.jpg",
       alt: "Building-wide cameras and access commissioned",
       placeholderFor: "Hero photo from the Linden Commercial commissioning.",
     },
@@ -343,7 +343,7 @@ export const projects: Project[] = [
     outcome:
       "Four Level 2 bays installed with a controller holding total charger draw under the building limit.",
     thumbnail: {
-      src: "/Images/carousel/ev.jpg",
+      src: "/images/carousel/ev.jpg",
       alt: "EV charging bay",
       placeholderFor: "The installed parking charger bays.",
     },
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     outcome:
       "Lobby and stair readers upgraded with auto-expiring credentials and tenant-hour schedules.",
     thumbnail: {
-      src: "/Images/carousel/access-inside.jpg",
+      src: "/images/carousel/access-inside.jpg",
       alt: "Modernized lobby access reader",
       placeholderFor: "The modernized lobby reader.",
     },
@@ -377,7 +377,7 @@ export const projects: Project[] = [
     outcome:
       "48-port core, distribution switching, and roof access points replaced over a maintenance window with no tenant downtime.",
     thumbnail: {
-      src: "/Images/services/structured-cabling.jpg",
+      src: "/images/services/structured-cabling.jpg",
       alt: "Refreshed core switching and patch panel",
       placeholderFor: "The refreshed server-room core switching.",
     },

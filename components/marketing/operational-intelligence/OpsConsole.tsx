@@ -142,7 +142,7 @@ export function OpsConsole() {
 
         <div className="relative aspect-[16/11] w-full">
           <Image
-            src="/Images/carousel/access.jpg"
+            src="/images/carousel/access.jpg"
             alt="Side yard camera feed"
             fill
             sizes="(max-width: 1024px) 100vw, 680px"
