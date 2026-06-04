@@ -76,3 +76,4 @@ GEMINI.md
 *.log
 .scratch/
 tmp/
+COPY_VOICE.md
