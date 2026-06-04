@@ -36,14 +36,17 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // Northline is a portfolio demonstration site surfaced through armatir.com,
+  // not a standalone indexable business. Default every route to noindex so
+  // demos never compete with the portfolio in search or let users bypass it.
+  // `follow` stays on so crawlers still traverse links. Portal routes tighten
+  // this to noindex,nofollow in app/portal/layout.tsx.
   robots: {
-    index: true,
+    index: false,
     follow: true,
     googleBot: {
-      index: true,
+      index: false,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
     },
   },
 };

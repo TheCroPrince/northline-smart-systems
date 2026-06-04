@@ -1,16 +1,8 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  // Only indexable marketing surfaces belong in the sitemap. Portal routes are
-  // noindex (see app/portal/layout.tsx), so they are intentionally excluded.
-  return [
-    {
-      url: `${siteUrl}/`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  // Northline is a portfolio demonstration site (noindex sitewide), so there are
+  // no URLs to advertise for indexing. The sitemap is intentionally empty; the
+  // route is kept so robots.txt's Sitemap reference resolves with a valid 200.
+  return [];
 }
