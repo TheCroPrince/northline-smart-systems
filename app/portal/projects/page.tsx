@@ -15,8 +15,10 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Projects · Client portal",
-  description: "Active installations and completed work at the property.",
+  title: "Project Visibility",
+  description:
+    "Track active installations, milestones, project updates, and completed smart-property upgrades inside the Northline client portal.",
+  alternates: { canonical: "/portal/projects" },
 };
 
 type SearchParams = Promise<{

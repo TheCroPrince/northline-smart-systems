@@ -16,8 +16,10 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Support · Client portal",
-  description: "Service requests, conversations, and resolutions for the property.",
+  title: "Support Requests",
+  description:
+    "Review support requests, service history, scheduled visits, and technician updates in the Northline client portal.",
+  alternates: { canonical: "/portal/support" },
 };
 
 type SearchParams = Promise<{

@@ -18,8 +18,10 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Devices · Client portal",
-  description: "Systems Northline installs and monitors at the property.",
+  title: "Managed Devices",
+  description:
+    "View managed smart-property systems, device status, last check-ins, firmware notes, and service visibility in the Northline client portal.",
+  alternates: { canonical: "/portal/devices" },
 };
 
 type SearchParams = Promise<{

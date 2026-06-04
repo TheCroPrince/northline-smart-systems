@@ -18,8 +18,10 @@ import { formatDate } from "@/lib/time";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Client portal preview",
-  description: "Northline client portal overview preview.",
+  title: "Client Portal",
+  description:
+    "Preview Northline's client portal for property status, devices, support requests, scheduled visits, and active projects.",
+  alternates: { canonical: "/portal" },
 };
 
 type SearchParams = Promise<{

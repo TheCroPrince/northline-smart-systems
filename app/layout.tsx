@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Instrument_Serif } from "next/font/google";
+import { siteConfig, siteUrl } from "@/lib/site";
 import "@/styles/globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -13,16 +14,37 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Northline Smart Systems",
-    template: "%s · Northline Smart Systems",
+    default: `${siteConfig.name} — Premium Smart-Property Systems`,
+    template: `%s · ${siteConfig.name}`,
   },
-  description: "Smart systems. Designed to disappear.",
-  metadataBase: new URL("https://northline.example"),
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  manifest: "/manifest.webmanifest",
+  // og:title / og:description / twitter:* are intentionally omitted here so Next
+  // auto-derives them from each route's resolved title + description.
   openGraph: {
-    title: "Northline Smart Systems",
-    description: "Smart systems. Designed to disappear.",
     type: "website",
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
