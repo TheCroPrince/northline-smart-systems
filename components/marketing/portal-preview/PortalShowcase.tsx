@@ -87,45 +87,47 @@ export function PortalShowcase() {
   return (
     <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
       {/* Tab list */}
-      <div
-        role="tablist"
-        aria-label="Portal areas"
-        aria-orientation="vertical"
-        className="flex flex-col gap-2"
-      >
-        {views.map((view) => {
-          const isActive = view.id === active.id;
-          return (
-            <button
-              key={view.id}
-              type="button"
-              role="tab"
-              id={`portal-tab-${view.id}`}
-              aria-selected={isActive}
-              aria-controls="portal-tabpanel"
-              onClick={() => select(view.id)}
-              className={cn(
-                "group rounded-xl border px-4 py-3.5 text-left transition-colors duration-200",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60",
-                isActive
-                  ? "border-accent/40 bg-accent/10"
-                  : "border-border-soft bg-surface/40 hover:border-border hover:bg-surface",
-              )}
-            >
-              <span
+      <div className="flex flex-col">
+        <div
+          role="tablist"
+          aria-label="Portal areas"
+          aria-orientation="vertical"
+          className="flex flex-col gap-2"
+        >
+          {views.map((view) => {
+            const isActive = view.id === active.id;
+            return (
+              <button
+                key={view.id}
+                type="button"
+                role="tab"
+                id={`portal-tab-${view.id}`}
+                aria-selected={isActive}
+                aria-controls="portal-tabpanel"
+                onClick={() => select(view.id)}
                 className={cn(
-                  "block text-sm font-medium transition-colors",
-                  isActive ? "text-text-hi" : "text-text-mid group-hover:text-text-hi",
+                  "group rounded-xl border px-4 py-3.5 text-left transition-colors duration-200",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60",
+                  isActive
+                    ? "border-accent/40 bg-accent/10"
+                    : "border-border-soft bg-surface/40 hover:border-border hover:bg-surface",
                 )}
               >
-                {view.label}
-              </span>
-              <span className="mt-1 block text-[13px] leading-snug text-text-low">
-                {view.blurb}
-              </span>
-            </button>
-          );
-        })}
+                <span
+                  className={cn(
+                    "block text-sm font-medium transition-colors",
+                    isActive ? "text-text-hi" : "text-text-mid group-hover:text-text-hi",
+                  )}
+                >
+                  {view.label}
+                </span>
+                <span className="mt-1 block text-[13px] leading-snug text-text-low">
+                  {view.blurb}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
         <div className="mt-5">
           <Button variant="secondary" href={active.href}>

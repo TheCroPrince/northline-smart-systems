@@ -33,9 +33,11 @@ export function Testimonials() {
 
         <ul className="mt-14 grid grid-cols-1 gap-5 sm:mt-16 md:grid-cols-3">
           {items.map((item, index) => (
-            <Reveal key={item.id} variant="rise" delay={index * 80} className="h-full">
-              <TestimonialCard item={item} />
-            </Reveal>
+            <li key={item.id} className="h-full">
+              <Reveal variant="rise" delay={index * 80} className="h-full">
+                <TestimonialCard item={item} />
+              </Reveal>
+            </li>
           ))}
         </ul>
       </Container>
@@ -45,7 +47,7 @@ export function Testimonials() {
 
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
-    <li className="flex h-full flex-col rounded-[1.5rem] border border-border-soft bg-surface p-7 shadow-[var(--shadow-card)]">
+    <figure className="flex h-full flex-col rounded-[1.5rem] border border-border-soft bg-surface p-7 shadow-[var(--shadow-card)]">
       <blockquote className="flex-1 text-base leading-relaxed text-text-hi">
         <span aria-hidden className="font-display text-3xl leading-none text-accent/50">
           &ldquo;
@@ -68,6 +70,6 @@ function TestimonialCard({ item }: { item: Testimonial }) {
           <span className="block text-xs text-text-mid">{item.role}</span>
         </span>
       </figcaption>
-    </li>
+    </figure>
   );
 }

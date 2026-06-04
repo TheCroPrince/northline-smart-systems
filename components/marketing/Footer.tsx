@@ -84,7 +84,7 @@ export function Footer() {
             <p className="mt-4 font-display text-lg italic text-text-mid">
               Designed systems. Quietly run.
             </p>
-            <p className="mt-5 text-sm text-text-low">
+            <p className="mt-5 text-sm text-text-mid">
               Operating across Canada and the United States.
             </p>
           </div>
@@ -92,7 +92,7 @@ export function Footer() {
           {/* Sitemap columns */}
           {columns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-low">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-mid">
                 {column.heading}
               </p>
               <ul className="mt-4 space-y-3">
@@ -106,7 +106,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-border-soft pt-6 text-xs text-text-low sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-border-soft pt-6 text-xs text-text-mid sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} Northline Smart Systems. Licensing details available on
             request.

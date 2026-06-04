@@ -107,9 +107,11 @@ export function Services() {
           aria-label="Service categories"
         >
           {capabilities.map((cap, index) => (
-            <Reveal key={cap.title} variant="rise" delay={index * 45} className="h-full">
-              <CapabilityRow cap={cap} />
-            </Reveal>
+            <li key={cap.title} className="h-full">
+              <Reveal variant="rise" delay={index * 45} className="h-full">
+                <CapabilityRow cap={cap} />
+              </Reveal>
+            </li>
           ))}
         </ul>
       </Container>
@@ -120,7 +122,7 @@ export function Services() {
 function CapabilityRow({ cap }: { cap: Capability }) {
   const { Icon, title, description, category, featured } = cap;
   return (
-    <li
+    <article
       className={cn(
         "group relative flex h-full items-start gap-4 overflow-hidden rounded-2xl border p-4 transition-colors duration-300 sm:p-5",
         featured
@@ -161,7 +163,7 @@ function CapabilityRow({ cap }: { cap: Capability }) {
         </h3>
         <p className="mt-1.5 text-xs leading-relaxed text-text-mid">{description}</p>
       </div>
-    </li>
+    </article>
   );
 }
 

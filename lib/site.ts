@@ -3,12 +3,12 @@
  * launch copy used across metadata, sitemap, robots, manifest, and JSON-LD.
  *
  * `NEXT_PUBLIC_SITE_URL` lets the deploy override the canonical base without a
- * code change (set it in the hosting env). The default is a placeholder domain
- * to swap before go-live.
+ * code change (set it in the hosting env). The default matches the production
+ * deploy target so metadata stays correct even if the env var is unset.
  */
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://northlinesmartsystems.com";
+  "https://northline.armatir.com";
 
 export const siteConfig = {
   name: "Northline Smart Systems",
