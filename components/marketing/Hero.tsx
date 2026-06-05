@@ -11,7 +11,7 @@ import { cn } from "@/lib/cn";
 /**
  * Hero — lamp section header with the headline rising into the light.
  *
- * "Smart systems." renders as clean serif; "Designed to disappear." is the
+ * "Smart systems" renders as clean serif; "designed to disappear." is the
  * signature Canvas Text moment (animated lines clipped through the glyphs).
  *
  * The "Now serving…" badge lives in the nav on desktop (≥lg) and drops beneath
@@ -88,10 +88,10 @@ export function Hero() {
             className="flex flex-col items-center font-display leading-[1.04] tracking-tight"
           >
             <span className="text-[clamp(2.25rem,10vw,5.75rem)] text-text-hi">
-              Smart systems.
+              Smart systems
             </span>
             <CanvasText
-              text="Designed to disappear."
+              text="designed to disappear."
               align="center"
               className="font-display italic leading-[1.2] text-[clamp(2.25rem,10vw,5.75rem)]"
             />
