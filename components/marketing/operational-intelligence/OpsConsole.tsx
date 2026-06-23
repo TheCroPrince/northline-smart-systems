@@ -6,8 +6,7 @@ import {
   useInView,
   useReducedMotion,
 } from "framer-motion";
-import { Check, RotateCcw } from "lucide-react";
-import Image from "next/image";
+import { Check, Radio, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { duration, ease } from "@/lib/motion";
@@ -34,7 +33,7 @@ const paths: readonly PathScene[] = [
     classification: "Delivery driver",
     confidence: "94%",
     action: "Logged. No alert sent.",
-    reasoning: "Matches scheduled FedEx window 2–4pm.",
+    reasoning: "Matches scheduled FedEx window 2-4pm.",
     tone: "ok",
   },
   {
@@ -48,24 +47,24 @@ const paths: readonly PathScene[] = [
   },
 ] as const;
 
-// Phase timings (ms from run start). Mirrors PRD §7a: motion → classifying →
-// classification → decision, the full story inside ~3 seconds.
+// Phase timings (ms from run start). Mirrors PRD §7a: motion -> classifying ->
+// classification -> decision, the full story inside ~3 seconds.
 const PHASE_AT = [60, 1100, 2300, 3000] as const;
-// phase index: 0 motion · 1 classifying · 2 classified · 3 decided
+// phase index: 0 motion, 1 classifying, 2 classified, 3 decided
 
 const FEED_TIMESTAMP = "02:14:07";
 const FEED_DATE = "MAY 28";
 
 /**
- * Operational Intelligence console. A treated camera still plays as a live side-
- * yard feed; the control panel runs the decision timeline beside it. Auto-plays
- * once on scroll-in, with a Replay control and a Delivery / Unknown path toggle.
+ * Operational Intelligence console. A purpose-built side-yard event visualization
+ * plays beside the decision timeline. Auto-plays once on scroll-in, with a Replay
+ * control and a Delivery / Unknown path toggle.
  *
  * Copy domain is governed by COPY_VOICE §9: the system speaks in fragments, the
  * word "AI" appears nowhere (including aria-labels), confidence is always a mono
  * percentage, and the Unknown path stays calm — colour shifts, pitch does not.
  *
- * Reduced motion → the final decided state renders immediately, no timers, no
+ * Reduced motion -> the final decided state renders immediately, no timers, no
  * shimmer (DESIGN_MOTION reduced-motion contract).
  */
 export function OpsConsole() {
@@ -121,7 +120,7 @@ export function OpsConsole() {
 
   return (
     <div ref={sectionRef} className="grid gap-6 lg:grid-cols-[1.25fr_1fr] lg:gap-7">
-      {/* Camera feed */}
+      {/* Event feed */}
       <div className="relative overflow-hidden rounded-2xl border border-border bg-ink-1 shadow-[var(--shadow-2)]">
         {/* Feed chrome */}
         <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-4 py-3 font-mono text-[11px] tracking-wide text-text-hi/90">
@@ -140,31 +139,71 @@ export function OpsConsole() {
           <span className="text-text-hi/70">CAM 02 · SIDE YARD</span>
         </div>
 
-        <div className="relative aspect-[16/11] w-full">
-          <Image
-            src="/images/carousel/access.jpg"
-            alt="Side yard camera feed"
-            fill
-            sizes="(max-width: 1024px) 100vw, 680px"
-            className="object-cover"
-            style={{ filter: "brightness(0.82) contrast(1.05) saturate(0.92)" }}
-          />
-          {/* Surveillance treatment: cool vignette + scanlines */}
+        <div
+          className="relative aspect-[16/11] w-full overflow-hidden bg-ink-0"
+          role="img"
+          aria-label={`Side yard event visualization showing ${path.classification.toLowerCase()} detection`}
+        >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
+            className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(8,9,12,0.55) 100%)",
+                "linear-gradient(135deg, rgba(95,214,187,0.14), transparent 38%), linear-gradient(180deg, rgba(243,238,222,0.06), transparent 52%), #090a07",
             }}
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay"
+            className="absolute inset-0 opacity-70"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 3px)",
+                "linear-gradient(rgba(95,214,187,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(95,214,187,0.08) 1px, transparent 1px)",
+              backgroundSize: "42px 42px",
             }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.11] mix-blend-screen"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 4px)",
+            }}
+          />
+
+          <div
+            aria-hidden
+            className="absolute left-[7%] top-[20%] h-[34%] w-[36%] rounded-xl border border-text-hi/10 bg-text-hi/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+          >
+            <span className="absolute left-3 top-3 font-mono text-[10px] uppercase tracking-wide text-text-low">
+              Residence
+            </span>
+            <span className="absolute bottom-3 right-3 rounded-full border border-border-soft px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-text-low">
+              Locked
+            </span>
+          </div>
+
+          <div
+            aria-hidden
+            className="absolute left-[9%] top-[64%] h-14 w-[86%] -rotate-6 rounded-full border border-accent/20 bg-accent/5"
+          />
+          <div
+            aria-hidden
+            className="absolute left-[53%] top-[27%] h-[46%] w-[34%] rounded-[1.5rem] border border-text-hi/10 bg-ink-0/35"
+          >
+            <span className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-wide text-text-low">
+              Service lane
+            </span>
+          </div>
+
+          <SceneNode className="left-[15%] top-[28%]" label="Door" />
+          <SceneNode className="left-[42%] top-[58%]" label="Gate" active={reached(0)} />
+          <SceneNode className="left-[70%] top-[43%]" label="Camera" active={reached(1)} />
+          <SceneNode
+            className="left-[64%] top-[70%]"
+            label={path.id === "delivery" ? "Window matched" : "No window"}
+            active={reached(2)}
+            warm={isWarm}
+            hideOnMobile
           />
 
           {/* Motion marker over the side-yard walkway */}
@@ -173,7 +212,7 @@ export function OpsConsole() {
               <motion.div
                 aria-hidden
                 className="absolute"
-                style={{ left: "62%", top: "55%", width: "24%", height: "30%" }}
+                style={{ left: "56%", top: "43%", width: "26%", height: "30%" }}
                 initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.08 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
@@ -181,7 +220,7 @@ export function OpsConsole() {
               >
                 <div
                   className={cn(
-                    "size-full rounded-sm border-2 transition-colors duration-500",
+                    "size-full rounded-md border-2 bg-ink-0/20 transition-colors duration-500",
                     reached(2)
                       ? isWarm
                         ? "border-signal-warm/80"
@@ -195,11 +234,31 @@ export function OpsConsole() {
                     reached(2) ? toneText : "text-accent-bright",
                   )}
                 >
-                  {reached(2) ? path.classification.toUpperCase() : "TRACKING"}
+                  {reached(2) ? path.classification.toUpperCase() : "SIGNAL LOCK"}
                 </span>
               </motion.div>
             )}
           </AnimatePresence>
+
+          <SignalRail
+            active={reached(1)}
+            isWarm={isWarm}
+            prefersReducedMotion={prefersReducedMotion}
+          />
+
+          <div
+            aria-hidden
+            className={cn(
+              "absolute bottom-3 right-4 z-20 rounded border px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide",
+              reached(2)
+                ? isWarm
+                  ? "border-signal-warm/35 bg-signal-warm/10 text-signal-warm"
+                  : "border-signal-ok/35 bg-signal-ok/10 text-signal-ok"
+                : "border-border-soft bg-ink-0/55 text-text-low",
+            )}
+          >
+            {reached(2) ? path.confidence : "Analyzing"}
+          </div>
 
           {/* Timestamp */}
           <div className="absolute bottom-3 left-4 z-20 font-mono text-[11px] text-text-hi/80">
@@ -319,6 +378,81 @@ export function OpsConsole() {
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function SceneNode({
+  className,
+  label,
+  active = false,
+  warm = false,
+  hideOnMobile = false,
+}: {
+  className: string;
+  label: string;
+  active?: boolean | null;
+  warm?: boolean;
+  hideOnMobile?: boolean;
+}) {
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        "absolute items-center gap-1.5 rounded-full border px-2 py-1 font-mono text-[10px] uppercase tracking-wide transition-colors duration-500",
+        hideOnMobile ? "hidden sm:inline-flex" : "inline-flex",
+        active
+          ? warm
+            ? "border-signal-warm/45 bg-signal-warm/10 text-signal-warm"
+            : "border-accent/45 bg-accent/10 text-accent-bright"
+          : "border-border-soft bg-ink-0/45 text-text-low",
+        className,
+      )}
+    >
+      <Radio size={11} strokeWidth={2} aria-hidden />
+      {label}
+    </span>
+  );
+}
+
+function SignalRail({
+  active,
+  isWarm,
+  prefersReducedMotion,
+}: {
+  active: boolean | null;
+  isWarm: boolean;
+  prefersReducedMotion: boolean | null;
+}) {
+  const signals = ["Camera", "Access", "Schedule", "Portal"] as const;
+
+  return (
+    <div
+      aria-hidden
+      className="absolute inset-x-4 bottom-10 grid grid-cols-4 gap-2 sm:bottom-11"
+    >
+      {signals.map((signal, index) => {
+        const isLit = active && index < 3;
+        const isDecision = active && index === 3;
+        return (
+          <div key={signal} className="min-w-0">
+            <div
+              className={cn(
+                "h-1.5 rounded-full transition-colors duration-500",
+                isLit || isDecision
+                  ? isWarm && isDecision
+                    ? "bg-signal-warm"
+                    : "bg-accent-bright"
+                  : "bg-border-soft",
+                isDecision && !prefersReducedMotion && "motion-safe:animate-pulse",
+              )}
+            />
+            <span className="mt-1 block truncate font-mono text-[9px] uppercase tracking-wide text-text-low">
+              {signal}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

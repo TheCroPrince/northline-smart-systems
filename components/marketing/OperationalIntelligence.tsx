@@ -4,11 +4,10 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { OpsConsole } from "./operational-intelligence/OpsConsole";
 
 /**
- * Operational Intelligence — the differentiator section. A camera-feed console
- * shows the monitoring layer classifying an event, reasoning about it, and
- * deciding whether to log or escalate, in about four seconds. Sits between
- * Capabilities and the Portal preview: the system decides, then you see it on
- * the record.
+ * Operational Intelligence — the differentiator section. A purpose-built event
+ * console shows the monitoring layer classifying a property signal and deciding
+ * whether to log or escalate. Sits between Capabilities and the Portal preview:
+ * the system decides, then you see it on the record.
  *
  * Copy is a separate domain (COPY_VOICE §9): no "AI"/"machine learning"
  * anywhere; the system speaks in fragments while the prose stays restrained.
@@ -39,7 +38,7 @@ export function OperationalIntelligence() {
               <span className="italic text-accent-bright"> Decide.</span>
             </span>
           }
-          subhead="Every Northline install includes a monitoring layer that classifies events, reasons about them, and decides whether to act, log, or escalate. You see only what needs your attention."
+          subhead="Every Northline install includes an operations layer that connects cameras, access, schedules, and service context. Routine events stay quiet; exceptions surface with enough detail to act."
           className="max-w-2xl"
         />
 
